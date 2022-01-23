@@ -1,6 +1,24 @@
-#include <iostream>
+#include "src/Menu.h"
+#include <stack>
+#include <iomanip>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    std::stack<Menu *> menus;
+    menus.push(new MainMenu());
+
+    while(!menus.empty()){
+        menus.top()->show();
+        Menu * ptr = menus.top()->getNextMenu();
+        if(ptr){
+            if(ptr != menus.top()){
+                menus.push(ptr);
+            }
+        }
+        else{
+            delete menus.top();
+            menus.pop();
+        }
+    }
     return 0;
 }
