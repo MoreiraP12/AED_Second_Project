@@ -47,18 +47,18 @@ Menu * MainMenu::getNextMenu() {
 MinimumStopsMenu::MinimumStopsMenu() : Menu() {}
 void MinimumStopsMenu::show() {
     system("cls");
-    cout << "\n Please tells us in which station you're and where you want go!\n";
+    cout << "\n Please tells us in which station you're and where you want go!\n \n";
 }
 Menu * MinimumStopsMenu::getNextMenu() {
     string origin, destination;
 
-    cout << "origin\n ";
+    cout << " Origin\n ";
     if(!input::get(origin)){
         //there should be some kind of input validation that tells me if the station exists and/or if I'm inputting invalid stuff(nothing, only special characters, etc...)
         return invalidOption();
     }
 
-    cout << "destination\n ";
+    cout << " Destination\n ";
     if(!input::get(destination)){
         return invalidOption();
     }
