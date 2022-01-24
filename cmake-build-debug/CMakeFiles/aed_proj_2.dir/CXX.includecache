@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/pedro/OneDrive/Ambiente de Trabalho/AED_Second_Project/src/Input.h
+C:/Coding/Cpp/aed-proj-2/main.cpp
+src/Menu.h
+C:/Coding/Cpp/aed-proj-2/src/Menu.h
+stack
+-
+iomanip
+-
+
+C:/Coding/Cpp/aed-proj-2/src/Input.h
 string
 -
 sstream
@@ -16,13 +24,13 @@ iostream
 algorithm
 -
 
-C:/Users/pedro/OneDrive/Ambiente de Trabalho/AED_Second_Project/src/Menu.cpp
+C:/Coding/Cpp/aed-proj-2/src/Menu.cpp
 Menu.h
-C:/Users/pedro/OneDrive/Ambiente de Trabalho/AED_Second_Project/src/Menu.h
+C:/Coding/Cpp/aed-proj-2/src/Menu.h
 Input.h
-C:/Users/pedro/OneDrive/Ambiente de Trabalho/AED_Second_Project/src/Input.h
+C:/Coding/Cpp/aed-proj-2/src/Input.h
 
-C:/Users/pedro/OneDrive/Ambiente de Trabalho/AED_Second_Project/src/Menu.h
+C:/Coding/Cpp/aed-proj-2/src/Menu.h
 iostream
 -
 map
@@ -34,5 +42,25 @@ functional
 set
 -
 algorithm
+-
+data.h
+C:/Coding/Cpp/aed-proj-2/src/data.h
+
+C:/Coding/Cpp/aed-proj-2/src/data.cpp
+data.h
+C:/Coding/Cpp/aed-proj-2/src/data.h
+
+C:/Coding/Cpp/aed-proj-2/src/data.h
+map
+-
+stop.h
+C:/Coding/Cpp/aed-proj-2/src/stop.h
+vector
+-
+fstream
+-
+
+C:/Coding/Cpp/aed-proj-2/src/stop.h
+iostream
 -
 

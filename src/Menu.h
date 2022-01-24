@@ -4,6 +4,7 @@
 #include <functional>
 #include <set>
 #include <algorithm>
+#include "data.h"
 
 using namespace std;
 /**
@@ -16,7 +17,7 @@ using namespace std;
 
 class Menu{
 protected:
-
+    Data* data;
     Menu * invalidOption();
 public:
     explicit Menu();
