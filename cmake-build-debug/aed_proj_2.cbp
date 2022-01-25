@@ -110,6 +110,12 @@
 		<Unit filename="C:/Coding/Cpp/aed-proj-2/src/graph.h">
 			<Option target="aed_proj_2"/>
 		</Unit>
+		<Unit filename="C:/Coding/Cpp/aed-proj-2/src/stop.cpp">
+			<Option target="aed_proj_2"/>
+		</Unit>
+		<Unit filename="C:/Coding/Cpp/aed-proj-2/src/stop.h">
+			<Option target="aed_proj_2"/>
+		</Unit>
 		<Unit filename="C:/Coding/Cpp/aed-proj-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

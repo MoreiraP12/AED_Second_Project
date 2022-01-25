@@ -6,11 +6,27 @@
 #include <stack>
 
 // Constructor: nr nodes and direction (default: undirected)
-Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
+Graph::Graph() {
+    n = 1;
+    Node n;
+    nodes.push_back(n);
+    hasDir = true;
+}
+
+void Graph::addNode(std::string s){
+    n++;
+    Node n;
+    n.color = WHITE;
+    n.distance = 0;
+    n.visited = false;
+    n.stop = s;
+    nodes.push_back(n);
 }
 
 // Add edge from source to destination with a certain weight
-void Graph::addEdge(int src, int dest, int weight) {
+void Graph::addEdge(int src, int dest, std::pair<bool, double> weight) {
+    //TODO
+    //Modify this to avoid duplicate edges. Receive line as parameter
     if (src<1 || src>n || dest<1 || dest>n) return;
     nodes[src].adj.push_back({dest, weight});
     if (!hasDir) nodes[dest].adj.push_back({src, weight});

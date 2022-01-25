@@ -3,6 +3,7 @@
 #define AED_PROJ_2_STOPS_H
 
 #include <iostream>
+#include <cmath>
 
 /**
  * Pretty much a modified version of the BFS algorithm
@@ -14,14 +15,13 @@ class Stop {
     std::string code;
     std::string name;
     std::string zone;
-    double latitude;
-    double longitude;
+    std::pair<double, double> coordinates;
 public:
     /**
      * Constructor for Stop class
      */
      Stop(std::string c, std::string n, std::string z, double lat, double lon):
-        code(c), name(n), zone(z), latitude(lat), longitude(lon){};
+        code(std::move(c)), name(std::move(n)), zone(std::move(z)), coordinates(lat, lon){};
 
      /**Getters*/
      /**
@@ -55,7 +55,7 @@ public:
       * @return the stop's latitude
       */
      double getLatitude() const{
-         return latitude;
+         return coordinates.first;
      }
 
      /**
@@ -63,7 +63,7 @@ public:
       * @return the stop's longitude
       */
      double getLongitude() const{
-         return longitude;
+         return coordinates.second;
      }
 
      /**
@@ -71,8 +71,10 @@ public:
       * @param stop the destination stop
       * @return the distance between both stops
       */
-     double getDistance(Stop stop) const{
-         return 0;
+     double getDistance(Stop stop);
+
+     bool operator==(const Stop& rhs) const{
+         return this->code == rhs.code || this->coordinates == rhs.coordinates;
      }
 };
 

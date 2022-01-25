@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Coding/Cpp/aed-proj-2/src/Menu.cpp" "C:/Coding/Cpp/aed-proj-2/cmake-build-debug/CMakeFiles/aed_proj_2.dir/src/Menu.cpp.obj"
   "C:/Coding/Cpp/aed-proj-2/src/data.cpp" "C:/Coding/Cpp/aed-proj-2/cmake-build-debug/CMakeFiles/aed_proj_2.dir/src/data.cpp.obj"
   "C:/Coding/Cpp/aed-proj-2/src/graph.cpp" "C:/Coding/Cpp/aed-proj-2/cmake-build-debug/CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj"
+  "C:/Coding/Cpp/aed-proj-2/src/stop.cpp" "C:/Coding/Cpp/aed-proj-2/cmake-build-debug/CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

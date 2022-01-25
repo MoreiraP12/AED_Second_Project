@@ -277,6 +277,33 @@ src/graph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aed_proj_2.dir\build.make CMakeFiles/aed_proj_2.dir/src/graph.cpp.s
 .PHONY : src/graph.cpp.s
 
+src/stop.obj: src/stop.cpp.obj
+
+.PHONY : src/stop.obj
+
+# target to build an object file
+src/stop.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aed_proj_2.dir\build.make CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj
+.PHONY : src/stop.cpp.obj
+
+src/stop.i: src/stop.cpp.i
+
+.PHONY : src/stop.i
+
+# target to preprocess a source file
+src/stop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aed_proj_2.dir\build.make CMakeFiles/aed_proj_2.dir/src/stop.cpp.i
+.PHONY : src/stop.cpp.i
+
+src/stop.s: src/stop.cpp.s
+
+.PHONY : src/stop.s
+
+# target to generate assembly for a file
+src/stop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aed_proj_2.dir\build.make CMakeFiles/aed_proj_2.dir/src/stop.cpp.s
+.PHONY : src/stop.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -301,6 +328,9 @@ help:
 	@echo ... src/graph.obj
 	@echo ... src/graph.i
 	@echo ... src/graph.s
+	@echo ... src/stop.obj
+	@echo ... src/stop.i
+	@echo ... src/stop.s
 .PHONY : help
 
 

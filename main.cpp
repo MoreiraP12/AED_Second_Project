@@ -4,9 +4,6 @@
 
 int main() {
 
-    Data d;
-    d.readStops();
-
     std::stack<Menu *> menus;
     menus.push(new MainMenu());
 

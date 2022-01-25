@@ -18,7 +18,7 @@ class Graph {
     };
     struct Edge {
         int dest;   // Destination node
-        int weight; // An integer weight
+        std::pair<bool, double> weight; // An integer weight
         std::list<std::string> lines;
     };
 
@@ -27,7 +27,7 @@ class Graph {
         State color;
         int distance;
         bool visited;   // As the node been visited on a search?
-        Stop* stop;
+        std::string stop;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -36,10 +36,36 @@ class Graph {
 
 public:
     // Constructor: nr nodes and direction (default: undirected)
-    Graph(int nodes, bool dir = false);
+    Graph();
+
+    void addNode(std::string s);
 
     // Add edge from source to destination with a certain weight
-    void addEdge(int src, int dest, int weight = 1);
+    void addEdge(int src, int dest, std::pair<bool, double> weight);
+
+    string elementAt(int i){
+        return nodes[i].stop;
+    }
+
+    int size(){
+        return nodes.size();
+    }
+
+    void printLines(int i) {
+        for (auto edge : nodes[i].adj) {
+            for (auto line : edge.lines)
+                std::cout << line << " ";
+            std::cout << endl;
+        }
+        std::cout << endl;
+    }
+
+    void printEdges(int i){
+        for(auto edge : nodes[i].adj)
+            std::cout << nodes[edge.dest].stop << " ";
+        std::cout << endl;
+    }
+
 
     // Depth-First Search: example implementation
     int dfs(int v);

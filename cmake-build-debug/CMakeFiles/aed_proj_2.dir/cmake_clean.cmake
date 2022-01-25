@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/aed_proj_2.dir/src/Menu.cpp.obj"
   "CMakeFiles/aed_proj_2.dir/src/data.cpp.obj"
   "CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj"
+  "CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj"
   "aed_proj_2.exe"
   "aed_proj_2.exe.manifest"
   "aed_proj_2.pdb"

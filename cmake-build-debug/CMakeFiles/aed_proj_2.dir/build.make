@@ -115,9 +115,22 @@ CMakeFiles/aed_proj_2.dir/src/Input.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aed_proj_2.dir/src/Input.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Coding\Cpp\aed-proj-2\src\Input.cpp -o CMakeFiles\aed_proj_2.dir\src\Input.cpp.s
 
+CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj: CMakeFiles/aed_proj_2.dir/flags.make
+CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj: ../src/stop.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\aed_proj_2.dir\src\stop.cpp.obj -c C:\Coding\Cpp\aed-proj-2\src\stop.cpp
+
+CMakeFiles/aed_proj_2.dir/src/stop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aed_proj_2.dir/src/stop.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Coding\Cpp\aed-proj-2\src\stop.cpp > CMakeFiles\aed_proj_2.dir\src\stop.cpp.i
+
+CMakeFiles/aed_proj_2.dir/src/stop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aed_proj_2.dir/src/stop.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Coding\Cpp\aed-proj-2\src\stop.cpp -o CMakeFiles\aed_proj_2.dir\src\stop.cpp.s
+
 CMakeFiles/aed_proj_2.dir/src/data.cpp.obj: CMakeFiles/aed_proj_2.dir/flags.make
 CMakeFiles/aed_proj_2.dir/src/data.cpp.obj: ../src/data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aed_proj_2.dir/src/data.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aed_proj_2.dir/src/data.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\aed_proj_2.dir\src\data.cpp.obj -c C:\Coding\Cpp\aed-proj-2\src\data.cpp
 
 CMakeFiles/aed_proj_2.dir/src/data.cpp.i: cmake_force
@@ -130,7 +143,7 @@ CMakeFiles/aed_proj_2.dir/src/data.cpp.s: cmake_force
 
 CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj: CMakeFiles/aed_proj_2.dir/flags.make
 CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj: ../src/graph.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\aed_proj_2.dir\src\graph.cpp.obj -c C:\Coding\Cpp\aed-proj-2\src\graph.cpp
 
 CMakeFiles/aed_proj_2.dir/src/graph.cpp.i: cmake_force
@@ -146,6 +159,7 @@ aed_proj_2_OBJECTS = \
 "CMakeFiles/aed_proj_2.dir/main.cpp.obj" \
 "CMakeFiles/aed_proj_2.dir/src/Menu.cpp.obj" \
 "CMakeFiles/aed_proj_2.dir/src/Input.cpp.obj" \
+"CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj" \
 "CMakeFiles/aed_proj_2.dir/src/data.cpp.obj" \
 "CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj"
 
@@ -155,13 +169,14 @@ aed_proj_2_EXTERNAL_OBJECTS =
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/main.cpp.obj
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/src/Menu.cpp.obj
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/src/Input.cpp.obj
+aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/src/stop.cpp.obj
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/src/data.cpp.obj
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/src/graph.cpp.obj
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/build.make
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/linklibs.rsp
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/objects1.rsp
 aed_proj_2.exe: CMakeFiles/aed_proj_2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable aed_proj_2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Coding\Cpp\aed-proj-2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable aed_proj_2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\aed_proj_2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
