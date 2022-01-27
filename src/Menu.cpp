@@ -106,4 +106,3 @@ Menu * MinimumStopsAlgorithmMenu::getNextMenu() {
     }
     return invalidOption();
 }
-

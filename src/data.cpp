@@ -2,6 +2,14 @@
 #include "data.h"
 
 
+
+Weight Data::getWeight(const Stop& s1,const Stop& s2){
+    double distance = s1.getDistance(s2);
+    if(s1.getZone() != s2.getZone())
+        return {distance, 1};
+    return {distance, 0};
+}
+
 //TODO
 //Add error checks to file openings
 void Data::readStops() {
@@ -24,7 +32,7 @@ void Data::readStops() {
 }
 
 void Data::loadLines() {
-    std::unordered_map<string, string>::iterator it = lines.begin();
+    auto it = lines.begin();
     std::ifstream infile;
     bool flag = false;
     while(it != lines.end()){
@@ -43,8 +51,8 @@ void Data::loadLines() {
             while(std::getline(infile, to)){
                 std::pair<Stop, int>src = stopList.find(from)->second,
                     dest = stopList.find(to)->second;
-                std::pair<bool, double> loadPair(false, src.first.getDistance(dest.first));
-                network.addEdge(src.second, dest.second, loadPair);
+                Weight weight = getWeight(src.first, dest.first);
+                network.addEdge(src.second, dest.second, it->first, weight);
                 from = to;
             }
             if(!flag) flag = true;

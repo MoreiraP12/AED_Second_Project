@@ -20,6 +20,9 @@ class Data {
      * @return a vector with each field of the .csv line
      */
     std::vector<std::string> readCsv(std::string line);
+
+    Weight getWeight(const Stop& s1,const Stop& s2);
+
 public:
 
     Data(){
@@ -49,6 +52,7 @@ public:
      */
     void loadLines();
 
+<<<<<<< HEAD
     /**
      * Prints all the stops stored in hashtable for user convenience
      */
@@ -63,6 +67,8 @@ public:
 
 
 
+=======
+>>>>>>> d4fcd445b2dd090e9e972d382bf58b4f43eb7140
     string elementAt(int i){
         return network.elementAt(i);
     }
@@ -71,6 +77,7 @@ public:
         return network.size();
     }
 
+<<<<<<< HEAD
     void edgesAt(int i){
         network.printEdges(i);
     }
@@ -80,6 +87,8 @@ public:
     }
 
 
+=======
+>>>>>>> d4fcd445b2dd090e9e972d382bf58b4f43eb7140
 };
 
 
