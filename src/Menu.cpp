@@ -1,9 +1,13 @@
 #include "Menu.h"
 #include "Input.h"
+#include "data.h"
 
 using namespace std;
 
-Menu::Menu() {}
+Data* Menu::data= new Data();
+
+Menu::Menu() {
+}
 
 Menu * Menu::invalidOption() {
     cout << "Invalid option" << std::endl;
@@ -13,9 +17,7 @@ Menu * Menu::invalidOption() {
 }
 
 // --------------- Main Menu ---------------
-MainMenu::MainMenu():Menu(){
-    //populate all the data to the multiple graphs
-}
+MainMenu::MainMenu():Menu(){}
 
 MainMenu::~MainMenu(){
     //save the data to the .csv
@@ -27,6 +29,7 @@ void MainMenu::show() {
 
     system("cmd /c cls");
     cout << "Main Menu:\n\n";
+    cout << "[" << ++options << "] " << "All Stops\n";
     cout << "[" << ++options << "] " << "Minimum Amount of Stops\n";
     cout << "[0] Exit\n";
 }
@@ -38,10 +41,24 @@ Menu * MainMenu::getNextMenu() {
     }
     switch(option){
         case 0: return nullptr;
-        case 1: return new MinimumStopsMenu();
+        case 1: return new StopsMenu();
+        case 2: return new MinimumStopsMenu();
     }
     return invalidOption();
 }
+
+// ---------------  Stops Menu ---------------
+StopsMenu::StopsMenu() : Menu() {}
+void StopsMenu::show() {
+    system("cls");
+    data->printStops();
+
+}
+Menu * StopsMenu::getNextMenu() {
+    input::waitEnter();
+    return nullptr ;
+}
+
 
 // --------------- Minimum Stops Menu ---------------
 MinimumStopsMenu::MinimumStopsMenu() : Menu() {}
@@ -53,13 +70,12 @@ Menu * MinimumStopsMenu::getNextMenu() {
     string origin, destination;
 
     cout << " Origin\n ";
-    if(!input::get(origin)){
-        //there should be some kind of input validation that tells me if the station exists and/or if I'm inputting invalid stuff(nothing, only special characters, etc...)
+    if(!input::get(origin) || !input::validateStop(data,origin)){
         return invalidOption();
     }
 
     cout << " Destination\n ";
-    if(!input::get(destination)){
+    if(!input::get(destination ) || !input::validateStop(data,origin)){
         return invalidOption();
     }
 

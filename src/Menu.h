@@ -17,7 +17,7 @@ using namespace std;
 
 class Menu{
 protected:
-    Data* data;
+    static Data* data;
     Menu * invalidOption();
 public:
     explicit Menu();
@@ -42,6 +42,17 @@ class MainMenu : public Menu {
 public:
     explicit MainMenu();
     ~MainMenu() override;
+    void show() override;
+    Menu * getNextMenu() override;
+};
+/**
+ * Total listing of stops
+ *
+ * Useful for our user to make know which stops exits and to which stop he might want to go
+ */
+class StopsMenu : public Menu{
+public:
+    explicit StopsMenu();
     void show() override;
     Menu * getNextMenu() override;
 };

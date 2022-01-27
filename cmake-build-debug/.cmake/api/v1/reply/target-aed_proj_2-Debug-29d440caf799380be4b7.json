@@ -180,7 +180,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "dataset",
+			"path" : "cmake-build-debug/dataset",
 			"sourceGroupIndex" : 2
 		},
 		{

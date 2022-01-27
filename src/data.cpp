@@ -88,3 +88,14 @@ std::vector<std::string> Data::readCsv(std::string line) {
     }
     return ret;
 }
+
+void Data::printStops(){
+    for (auto const &pair: stopList) {
+        std::cout << pair.first << " " << pair.second.first.getName() << " " << pair.second.first.getZone() << "\n";
+    }
+
+}
+
+bool Data::searchStop(std::string stop){
+    return stopList.find(stop) != stopList.end();
+}

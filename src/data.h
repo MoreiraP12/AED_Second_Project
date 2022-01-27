@@ -24,6 +24,9 @@ public:
 
     Data(){
         network = Graph();
+        this->readStops();
+        this->readLines();
+        this->loadLines();
     }
 
     /**
@@ -46,7 +49,17 @@ public:
      */
     void loadLines();
 
+    /**
+     * Prints all the stops stored in hashtable for user convenience
+     */
+    void printStops();
 
+    /**
+     * Searches for the existence of received stop
+     * in order to validate inputs
+     * @return true if the received stop id exists
+     */
+    bool searchStop(std::string);
 
 
 
@@ -65,6 +78,7 @@ public:
     void linesAt(int i){
         network.printLines(i);
     }
+
 
 };
 

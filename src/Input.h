@@ -10,6 +10,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include "data.h"
 
 using namespace std;
 
@@ -66,6 +67,12 @@ namespace input {
      * @param name
      * @return true if valid
      */
+
+    /**
+     * Checks for the existence of inputted stop id string
+     * @return true if exists in our 'database'
+     */
+    bool validateStop(Data* data,std::string stop);
 
 }
 
