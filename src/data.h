@@ -20,6 +20,9 @@ class Data {
      * @return a vector with each field of the .csv line
      */
     std::vector<std::string> readCsv(std::string line);
+
+    Weight getWeight(const Stop& s1,const Stop& s2);
+
 public:
 
     Data(){
@@ -46,24 +49,12 @@ public:
      */
     void loadLines();
 
-
-
-
-
     string elementAt(int i){
         return network.elementAt(i);
     }
 
     int graphSize() {
         return network.size();
-    }
-
-    void edgesAt(int i){
-        network.printEdges(i);
-    }
-
-    void linesAt(int i){
-        network.printLines(i);
     }
 
 };

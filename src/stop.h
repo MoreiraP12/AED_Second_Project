@@ -67,11 +67,11 @@ public:
      }
 
      /**
-      * Returns the ditsnace between this destination Stop
+      * Returns the distance between this destination Stop
       * @param stop the destination stop
       * @return the distance between both stops
       */
-     double getDistance(Stop stop);
+     double getDistance(const Stop& stop) const;
 
      bool operator==(const Stop& rhs) const{
          return this->code == rhs.code || this->coordinates == rhs.coordinates;
