@@ -52,7 +52,6 @@ public:
      */
     void loadLines();
 
-<<<<<<< HEAD
     /**
      * Prints all the stops stored in hashtable for user convenience
      */
@@ -65,30 +64,10 @@ public:
      */
     bool searchStop(std::string);
 
-
-
-=======
->>>>>>> d4fcd445b2dd090e9e972d382bf58b4f43eb7140
-    string elementAt(int i){
-        return network.elementAt(i);
-    }
-
     int graphSize() {
         return network.size();
     }
 
-<<<<<<< HEAD
-    void edgesAt(int i){
-        network.printEdges(i);
-    }
-
-    void linesAt(int i){
-        network.printLines(i);
-    }
-
-
-=======
->>>>>>> d4fcd445b2dd090e9e972d382bf58b4f43eb7140
 };
 
 
