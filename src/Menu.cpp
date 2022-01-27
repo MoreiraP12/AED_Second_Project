@@ -26,7 +26,7 @@ MainMenu::~MainMenu(){
 
 void MainMenu::show() {
     unsigned int options = 0;
-
+    data->showPath(2,4, dist);
     system("cmd /c cls");
     cout << "Main Menu:\n\n";
     cout << "[" << ++options << "] " << "All Stops\n";

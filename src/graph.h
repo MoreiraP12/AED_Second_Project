@@ -6,12 +6,15 @@
 #include <queue>
 #include <iostream>
 #include "stop.h"
+#define INF (INT_MAX/2)
 
 using namespace std;
 
+enum typeWeight{dist, zone};
+
 struct Weight{
-    double distance;
-    int zone;
+    double dist;
+    double zone;
 };
 
 struct Edge {
@@ -22,10 +25,12 @@ struct Edge {
 
 struct Node {
     list<Edge> adj;
-    int distance;
+    double distance;
     bool visited;
+    //TODO
+    //Overkill?
     std::string stop;
-    std::string parent;
+    int parent;
 };
 
 class Graph {
@@ -43,6 +48,8 @@ public:
     int size(){
         return nodes.size();
     }
+    void dijkstra(int src, typeWeight type);
+    list<string> shortPathDijkstra(int src, int dest, typeWeight type);
 };
 
 #endif
