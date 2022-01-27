@@ -25,6 +25,7 @@ struct Node {
     int distance;
     bool visited;
     std::string stop;
+    std::string parent;
 };
 
 class Graph {
