@@ -28,29 +28,26 @@ struct Node {
     list<Edge> adj;
     double distance;
     bool visited;
-    //TODO
-    //Overkill?
-    std::string stop;
+    Stop stop;
     int parent;
 };
 
 class Graph {
     int n;
-    bool hasDir;
     vector<Node> nodes;
 
 public:
     Graph();
-    void addNode(std::string s);
+    void addNode(Stop s);
     void addEdge(int src, int dest, std::string line, Weight weight);
-    string elementAt(int i){
+    Stop elementAt(int i){
         return nodes[i].stop;
     }
     int size(){
         return nodes.size();
     }
     void dijkstra(int src, typeWeight type);
-    stack<string> shortPathDijkstra(int src, int dest, typeWeight type);
+    stack<Stop> shortPathDijkstra(int src, int dest, typeWeight type);
 };
 
 #endif

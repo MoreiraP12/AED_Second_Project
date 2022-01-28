@@ -28,8 +28,8 @@ void MainMenu::show() {
 
     unsigned int options = 0;
     system("cmd /c cls");
-    //data->showPath(8,10, dist);
-    data->showPath(8,10, zone);
+    data->showPath(8,10, dist);
+    //data->showPath(8,10, zone);
     cout << "Main Menu:\n\n";
     cout << "[" << ++options << "] " << "All Stops\n";
     cout << "[" << ++options << "] " << "Minimum Amount of Stops\n";
@@ -53,7 +53,7 @@ Menu * MainMenu::getNextMenu() {
 StopsMenu::StopsMenu() : Menu() {}
 void StopsMenu::show() {
     system("cls");
-    data->printStops();
+    //data->printStops(); //TODO
 
 }
 Menu * StopsMenu::getNextMenu() {

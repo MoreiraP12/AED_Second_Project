@@ -7,10 +7,9 @@ Graph::Graph() {
     n = 1;
     Node n;
     nodes.push_back(n);
-    hasDir = true;
 }
 
-void Graph::addNode(std::string s){
+void Graph::addNode(Stop s){
     n++;
     Node n;
     n.distance = 0;
@@ -68,9 +67,9 @@ void Graph::dijkstra(int src, typeWeight type) {
     }
 }
 
-stack<string> Graph::shortPathDijkstra(int src, int dest, typeWeight type){
+stack<Stop> Graph::shortPathDijkstra(int src, int dest, typeWeight type){
     dijkstra(src, type);
-    stack<string> path;
+    stack<Stop> path;
     if(nodes[dest].distance == INF) return path;
     path.push(nodes[dest].stop);
     int v = dest;
