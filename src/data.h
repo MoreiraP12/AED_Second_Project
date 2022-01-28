@@ -9,8 +9,8 @@
 #include "graph.h"
 
 class Data {
-    std::unordered_map<std::string, std::pair<Stop, int>> stopList;
-    std::unordered_map<double, std::string> stopCoordinates;
+    std::unordered_map<std::string, int> stopList;
+    std::unordered_map<double, int> stopCoordinates;
     std::unordered_map<string, string> lines;
     Graph network;
 
@@ -52,15 +52,13 @@ public:
      */
     void loadLines();
 
-<<<<<<< HEAD
     Stop findStop(std::string stop);
 
-=======
     /**
      * Prints all the stops stored in hashtable for user convenience
      */
     void printStops();
->>>>>>> bb49a4bba15ae72a8b4c89715a86982df6e86e6f
+
 
     /**
      * Searches for the existence of received stop
@@ -71,6 +69,15 @@ public:
 
     int graphSize() {
         return network.size();
+    }
+
+    void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
+        stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);
+        while (path.size() != 1){
+            cout << path.top().getName() << " -> ";
+            path.pop();
+        }
+        cout << path.top().getName() << endl;
     }
 
 };

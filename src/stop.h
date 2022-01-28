@@ -20,8 +20,9 @@ public:
     /**
      * Constructor for Stop class
      */
-     Stop(std::string c, std::string n, std::string z, double lat, double lon):
+     explicit Stop(std::string c = "", std::string n = "", std::string z = "", double lat = 0, double lon = 0):
         code(std::move(c)), name(std::move(n)), zone(std::move(z)), coordinates(lat, lon){};
+
 
      /**Getters*/
      /**

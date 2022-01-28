@@ -5,44 +5,51 @@
 #include <list>
 #include <queue>
 #include <iostream>
+#include <stack>
 #include "stop.h"
+#include <set>
+#define INF (INT_MAX/2)
 
 using namespace std;
 
+enum typeWeight{DIST, ZONE, LINE};
+
 struct Weight{
-    double distance;
-    int zone;
+    double dist;
+    double zone;
 };
 
 struct Edge {
     int dest;
-    std::list<std::string> lines;
+    set<std::string> lines;
     Weight weight;
 };
 
 struct Node {
     list<Edge> adj;
-    int distance;
+    double distance;
     bool visited;
-    std::string stop;
-    std::string parent;
+    Stop stop;
+    int parent;
 };
 
 class Graph {
     int n;
-    bool hasDir;
     vector<Node> nodes;
 
 public:
     Graph();
-    void addNode(std::string s);
+    void addNode(Stop s);
     void addEdge(int src, int dest, std::string line, Weight weight);
-    string elementAt(int i){
+    Stop elementAt(int i){
         return nodes[i].stop;
     }
     int size(){
         return nodes.size();
     }
+    void dijkstra(int src, typeWeight type);
+    void dijkstraLines(int src);
+    stack<Stop> shortPathDijkstra(int src, int dest, typeWeight type);
 };
 
 #endif

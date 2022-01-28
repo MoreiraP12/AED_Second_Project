@@ -20,11 +20,10 @@ void Data::readStops() {
     while(std::getline(infile, line)){
         std::vector<std::string> data = readCsv(line);
         Stop s(data[0], data[1], data[2], std::stod(data[3]), std::stod(data[4]));
-        std::pair<Stop, int> loadPair(s, i);
-        stopList.insert(std::pair<string, std::pair<Stop, int>>(s.getCode(), loadPair));
+        stopList.insert({s.getCode(),i});
         double key = s.getLatitude() - s.getLongitude();
-        stopCoordinates.insert(std::pair<double, string>(key, s.getCode()));
-        network.addNode(s.getCode());
+        stopCoordinates.insert({abs(key),i});
+        network.addNode(s);
         data.clear();
         i++;
     }
@@ -49,10 +48,9 @@ void Data::loadLines() {
             std::getline(infile, from);
             std::getline(infile, from);
             while(std::getline(infile, to)){
-                std::pair<Stop, int>src = stopList.find(from)->second,
-                    dest = stopList.find(to)->second;
-                Weight weight = getWeight(src.first, dest.first);
-                network.addEdge(src.second, dest.second, it->first, weight);
+                int src = stopList.find(from)->second, dest = stopList.find(to)->second;
+                Weight weight = getWeight(network.elementAt(src), network.elementAt(dest));//TODO
+                network.addEdge(src, dest, it->first, weight);
                 from = to;
             }
             if(!flag) flag = true;
@@ -97,18 +95,16 @@ std::vector<std::string> Data::readCsv(std::string line) {
     return ret;
 }
 
-
-Stop Data::findStop(std::string stop){
-    return stopList.find(stop)->second.first;
-
+/*
+>>>>>>> 3ad4ca56dbd3e2b1c471f703c7a139df7b30fce4
 void Data::printStops(){
     for (auto const &pair: stopList) {
         std::cout << pair.first << " " << pair.second.first.getName() << " " << pair.second.first.getZone() << "\n";
     }
 
-}
+}*/
 
 bool Data::searchStop(std::string stop){
     return stopList.find(stop) != stopList.end();
->>>>>>> bb49a4bba15ae72a8b4c89715a86982df6e86e6f
+
 }
