@@ -25,6 +25,7 @@ MainMenu::~MainMenu(){
 }
 
 void MainMenu::show() {
+
     unsigned int options = 0;
     data->showPath(2,4, dist);
     system("cmd /c cls");
@@ -91,7 +92,7 @@ void MinimumStopsAlgorithmMenu::show() {
     //Here should be the chain of minimum stops for the desired path (call)
     int options;
     cout << "Main Menu:\n\n";
-    cout << "[" << ++options << "] " << "Home\n";
+    cout << "[" << ++options << "] " << "Home\n";//TODO Possible Bug
     cout << "[" << ++options << "] " << "Back\n";
 
 }

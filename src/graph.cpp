@@ -36,7 +36,7 @@ void Graph::addEdge(int src, int dest, std::string line, Weight weight) {
 }
 
 void Graph::dijkstra(int src, typeWeight type) {
-    MinHeap<int, int> q(n, -1);
+    MinHeap<int, double> q(n, -1);
     for (int v=1; v<=n; v++) {
         nodes[v].distance = INF;
         q.insert(v, INF);
@@ -45,6 +45,7 @@ void Graph::dijkstra(int src, typeWeight type) {
     nodes[src].distance = 0;
     q.decreaseKey(src, 0);
     nodes[src].parent = src;
+    int i = 0;
     while (q.getSize()>0) {
         int u = q.removeMin();
         nodes[u].visited = true;
@@ -64,6 +65,8 @@ void Graph::dijkstra(int src, typeWeight type) {
                 q.decreaseKey(v, nodes[v].distance);
                 nodes[v].parent = u;
             }
+            cout << i << endl;
+            i++;
         }
     }
 }
