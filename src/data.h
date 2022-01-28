@@ -46,6 +46,8 @@ public:
      */
     void loadLines();
 
+    Stop findStop(std::string stop);
+
 
 
 

@@ -88,3 +88,7 @@ std::vector<std::string> Data::readCsv(std::string line) {
     }
     return ret;
 }
+
+Stop Data::findStop(std::string stop){
+    return stopList.find(stop)->second.first;
+}
