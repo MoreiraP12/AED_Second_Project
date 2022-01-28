@@ -21,6 +21,12 @@ class Data {
      */
     std::vector<std::string> readCsv(std::string line);
 
+    /**
+     * Returns the weight of the edge that connects two stops
+     * @param s1 the first stop
+     * @param s2 the second stop
+     * @return the weight of the edge that connects them
+     */
     Weight getWeight(const Stop& s1,const Stop& s2);
 
 public:
@@ -67,6 +73,13 @@ public:
      */
     int searchStop(std::string);
 
+    /**
+     * Shows the shortest path between two stops according to the desired
+     * weight parameter
+     * @param src the source node
+     * @param dest the destination node
+     * @param typeWeight the weight parameter
+     */
     void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
         stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);
         while (path.size() != 1){

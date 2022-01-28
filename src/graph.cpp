@@ -72,6 +72,7 @@ void Graph::dijkstraLines(int src) {
     for (int v=1; v<=n; v++) {
         nodes[v].distance = INF;
         q.insert(v, INF);
+        nodes[v].parent = -1;
         nodes[v].visited = false;
     }
     nodes[src].distance = 0;
@@ -84,19 +85,22 @@ void Graph::dijkstraLines(int src) {
             int v = e.dest;
             double w;
             set<std::string> lines;
-            for(auto ed : nodes[nodes[u].parent].adj) {
-                if (ed.dest == u)
-                    lines = ed.lines;
-            }
-            bool change = true;
-            for(auto line : lines){
-                if(e.lines.find(line) != lines.end()){
-                    change = false;
-                    break;
+            if(nodes[u].parent != -1){
+                for (auto ed : nodes[nodes[u].parent].adj) {
+                    if (ed.dest == u)
+                        lines = ed.lines;
                 }
+                bool change = true;
+                for (auto line : lines) {
+                    if (e.lines.find(line) != lines.end()) {
+
+                        change = false;
+                        break;
+                    }
+                }
+                //if not, w = 1
+                if (change) w = 1;
             }
-            //if not, w = 1
-            if(change) w = 1;
             if (!nodes[v].visited && nodes[u].distance + w < nodes[v].distance) {
                 nodes[v].distance = nodes[u].distance + w;
                 q.decreaseKey(v, nodes[v].distance);
@@ -107,7 +111,8 @@ void Graph::dijkstraLines(int src) {
 }
 
 stack<Stop> Graph::shortPathDijkstra(int src, int dest, typeWeight type){
-    dijkstra(src, type);
+    if(type == LINE) dijkstraLines(src);
+    else dijkstra(src, type);
     stack<Stop> path;
     if(nodes[dest].distance == INF) return path;
     path.push(nodes[dest].stop);
