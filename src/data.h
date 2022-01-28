@@ -9,8 +9,8 @@
 #include "graph.h"
 
 class Data {
-    std::unordered_map<std::string, std::pair<Stop, int>> stopList;
-    std::unordered_map<double, std::string> stopCoordinates;
+    std::unordered_map<std::string, int> stopList;
+    std::unordered_map<double, int> stopCoordinates;
     std::unordered_map<string, string> lines;
     Graph network;
 
@@ -66,6 +66,15 @@ public:
 
     int graphSize() {
         return network.size();
+    }
+
+    void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
+        stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);
+        while (path.size() != 1){
+            cout << path.top().getName() << " -> ";
+            path.pop();
+        }
+        cout << path.top().getName() << endl;
     }
 
 };
