@@ -5,6 +5,7 @@
 #include <list>
 #include <queue>
 #include <iostream>
+#include <stack>
 #include "stop.h"
 #define INF (INT_MAX/2)
 
@@ -49,7 +50,7 @@ public:
         return nodes.size();
     }
     void dijkstra(int src, typeWeight type);
-    list<string> shortPathDijkstra(int src, int dest, typeWeight type);
+    stack<string> shortPathDijkstra(int src, int dest, typeWeight type);
 };
 
 #endif

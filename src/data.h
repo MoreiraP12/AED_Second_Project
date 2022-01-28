@@ -68,14 +68,14 @@ public:
         return network.size();
     }
 
-    void showPath(int src, int dest, typeWeight typeWeight){
-        list<string> path = network.shortPathDijkstra(src,dest,typeWeight);
-        /*auto it = path.begin();
-        while (it != path.end()){
-            cout << *it << " -> ";
-            it++;
+    void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
+        stack<string> path = network.shortPathDijkstra(src,dest,typeWeight);
+        while (path.size() != 1){
+            Stop stop  = stopList.at(path.top()).first;
+            cout << stop.getName() << " -> ";
+            path.pop();
         }
-        cout << endl;*/
+        cout << path.top() << endl;
     }
 
 };
