@@ -9,4 +9,4 @@ add_executable(aed_proj_2 main.cpp
         src/stop.h src/stop.cpp
         src/data.cpp src/data.h
         src/graph.h src/graph.cpp
-        ./dataset)
+        cmake-build-debug/dataset src/PathFinder.cpp src/PathFinder.h)

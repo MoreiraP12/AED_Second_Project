@@ -3,6 +3,7 @@
 
 
 #include "Input.h"
+#include "data.h"
 
 using namespace std;
 
@@ -38,5 +39,9 @@ namespace input {
             return (a == b) && (a == ' ');
         });
         str.erase(new_end, str.end());
+    }
+
+    bool validateStop(Data* data,std::string stop){
+        return data->searchStop(stop);
     }
 }

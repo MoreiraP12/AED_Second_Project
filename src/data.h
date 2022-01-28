@@ -20,10 +20,16 @@ class Data {
      * @return a vector with each field of the .csv line
      */
     std::vector<std::string> readCsv(std::string line);
+
+    Weight getWeight(const Stop& s1,const Stop& s2);
+
 public:
 
     Data(){
         network = Graph();
+        this->readStops();
+        this->readLines();
+        this->loadLines();
     }
 
     /**
@@ -46,26 +52,25 @@ public:
      */
     void loadLines();
 
+<<<<<<< HEAD
     Stop findStop(std::string stop);
 
+=======
+    /**
+     * Prints all the stops stored in hashtable for user convenience
+     */
+    void printStops();
+>>>>>>> bb49a4bba15ae72a8b4c89715a86982df6e86e6f
 
-
-
-
-    string elementAt(int i){
-        return network.elementAt(i);
-    }
+    /**
+     * Searches for the existence of received stop
+     * in order to validate inputs
+     * @return true if the received stop id exists
+     */
+    bool searchStop(std::string);
 
     int graphSize() {
         return network.size();
-    }
-
-    void edgesAt(int i){
-        network.printEdges(i);
-    }
-
-    void linesAt(int i){
-        network.printLines(i);
     }
 
 };

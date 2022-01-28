@@ -5,7 +5,7 @@
 
 #include "stop.h"
 
-double Stop::getDistance(Stop stop){
+double Stop::getDistance(const Stop& stop) const{
     double lat1 = this->getLatitude(),
         lat2 = stop.getLatitude(),
         lon1 = this->getLongitude(),
@@ -16,11 +16,9 @@ double Stop::getDistance(Stop stop){
     double dLon = (lon2 - lon1) *
                   M_PI / 180.0;
 
-    // convert to radians
     lat1 = (lat1) * M_PI / 180.0;
     lat2 = (lat2) * M_PI / 180.0;
 
-    // apply formulae
     double a = pow(sin(dLat / 2), 2) +
                pow(sin(dLon / 2), 2) *
                cos(lat1) * cos(lat2);
