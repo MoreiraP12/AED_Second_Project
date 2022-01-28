@@ -41,7 +41,7 @@ namespace input {
         str.erase(new_end, str.end());
     }
 
-    bool validateStop(Data* data,std::string stop){
-        return data->searchStop(stop);
+    bool validateStop(Data* data, const std::string& stop){
+        return data->searchStop(stop) != -1;
     }
 }

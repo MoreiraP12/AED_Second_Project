@@ -63,13 +63,9 @@ public:
     /**
      * Searches for the existence of received stop
      * in order to validate inputs
-     * @return true if the received stop id exists
+     * @return the index of the id, if it exists; -1 otherwise
      */
-    bool searchStop(std::string);
-
-    int graphSize() {
-        return network.size();
-    }
+    int searchStop(std::string);
 
     void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
         stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);

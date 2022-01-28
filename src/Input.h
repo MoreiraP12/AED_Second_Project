@@ -72,7 +72,7 @@ namespace input {
      * Checks for the existence of inputted stop id string
      * @return true if exists in our 'database'
      */
-    bool validateStop(Data* data,std::string stop);
+    bool validateStop(Data* data,const std::string& stop);
 
 }
 
