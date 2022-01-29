@@ -3,7 +3,7 @@
 #define AED_PROJ_2_DATA_H
 
 #include <unordered_map>
-#include "stop.h"
+#include "Stop.h"
 #include <vector>
 #include <fstream>
 #include "graph.h"
@@ -87,20 +87,9 @@ public:
         network.destroyWalkingEdges();
     }
 
-    void minStops(int s, int dest){
-        network.shortPathBFS(s,dest,network.size());
-    }
-
     vector<string> getWalkingStops( int n, double maxDist);
 
-    void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
-        stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);
-        while (path.size() != 1){
-            cout << path.top().getName() << " -> ";
-            path.pop();
-        }
-        cout << path.top().getName() << endl;
-    }
+    void showPath(int src, int dest, typeWeight typeWeight);
 
 };
 

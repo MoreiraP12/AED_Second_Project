@@ -3,7 +3,7 @@
 //
 
 
-#include "stop.h"
+#include "Stop.h"
 
 double Stop::getDistance(const Stop& stop) const{
     double lat1 = this->getLatitude(),

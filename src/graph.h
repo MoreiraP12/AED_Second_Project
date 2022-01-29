@@ -6,13 +6,13 @@
 #include <queue>
 #include <iostream>
 #include <stack>
-#include "stop.h"
+#include "Stop.h"
 #include <set>
 #define INF (INT_MAX/2)
 
 using namespace std;
 
-enum typeWeight{DIST, ZONE, LINE};
+enum typeWeight{DIST, ZONE, LINE, STOPS};
 
 struct Weight{
     double dist;
@@ -51,11 +51,10 @@ public:
         return nodes.size();
     }
 
-    bool bfs(int src, int dest, int v, int pred[], int dist[]);
-    void shortPathBFS(int s, int dest,int v) ;
+    void bfs(int v);
     void dijkstra(int src, typeWeight type);
     void dijkstraLines(int src);
-    stack<Stop> shortPathDijkstra(int src, int dest, typeWeight type);
+    stack<Stop> shortPath(int src, int dest, typeWeight type);
 };
 
 #endif

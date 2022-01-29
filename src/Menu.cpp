@@ -143,7 +143,7 @@ Menu * SearchMenu::getNextMenu() {
     }
     if(walk){data->injectWalkingEdges(distance);}
     switch(option){
-        case 1: data->minStops(input::stringToInt(data,origin),input::stringToInt(data,destination));
+        case 1: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), STOPS);
         case 2: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), DIST);
         case 3: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
         case 4: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);

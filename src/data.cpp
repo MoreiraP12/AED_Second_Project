@@ -1,6 +1,6 @@
 //Created by Pedro Barbeira
 #include "data.h"
-
+#include "Exceptions.h"
 
 
 Weight Data::getWeight(const Stop& s1,const Stop& s2){
@@ -119,4 +119,19 @@ int Data::searchStop(std::string stop){
     if(it == stopList.end())
         return -1;
     else return it->second;
+}
+
+void Data::showPath(int src, int dest, typeWeight typeWeight){
+    stack<Stop> path;
+    try{
+        path = network.shortPath(src, dest, typeWeight);
+    }catch (NoPathAvailable& e){
+        e.printError();
+    }
+
+    while (path.size() != 1){
+        cout << path.top().getName() << " -> ";
+        path.pop();
+    }
+    cout << path.top().getName() << endl;
 }

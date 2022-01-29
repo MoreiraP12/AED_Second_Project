@@ -1,5 +1,6 @@
 #include "graph.h"
 #include "minHeap.h"
+#include "Exceptions.h"
 #include <cmath>
 #include <stack>
 
@@ -34,6 +35,8 @@ void Graph::addEdge(int src, int dest, std::string line, Weight weight, bool onF
     e.onFoot = onFoot;
     nodes[src].adj.push_back(e);
 }
+
+
 void Graph::createWalkingEdges(double maxDist){
     for(int j = 1; j <= n; j++){
         Stop from = nodes[j].stop;
@@ -66,86 +69,28 @@ void Graph::destroyWalkingEdges(){
 
 }
 
-bool Graph::bfs(int src, int dest, int v, int pred[], int dist[]){
-    // a queue to maintain queue of vertices whose
-    // adjacency list is to be scanned as per normal
-    // DFS algorithm
-    list<int> queue;
-
-    // boolean array visited[] which stores the
-    // information whether ith vertex is reached
-    // at least once in the Breadth first search
-    bool visited[v];
-
-    // initially all vertices are unvisited
-    // so v[i] for all i is false
-    // and as no path is yet constructed
-    // dist[i] for all i set to infinity
-    for (int i = 0; i < v; i++) {
-        visited[i] = false;
-        dist[i] = INT_MAX;
-        pred[i] = -1;
+void Graph::bfs(int v) {
+    for (int v=1; v<=n; v++){
+        nodes[v].visited = false;
+        nodes[v].distance = -1;
+        nodes[v].parent = -1;
     }
-
-    // now source is first to be visited and
-    // distance from source to itself should be 0
-    visited[src] = true;
-    dist[src] = 0;
-    queue.push_back(src);
-
-    // standard BFS algorithm
-    while (!queue.empty()) {
-        int u = queue.front();
-        queue.pop_front();
-        for (std::vector<Edge>::const_iterator it = nodes[u].adj.begin(); it != nodes[u].adj.end(); ++it) {
-            if (nodes[it->dest].visited == false) {
-                nodes[it->dest].visited = true;
-                dist[it->dest] = dist[u] + 1;
-                pred[it->dest] = u;
-                queue.push_back(it->dest);
-
-                // We stop BFS when we find
-                // destination.
-                if (it->dest == dest)
-                    return true;
+    queue<int> q;
+    q.push(v);
+    nodes[v].distance = 0;
+    nodes[v]. visited = true;
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (auto e : nodes[u].adj) {
+            int w = e.dest;
+            if (!nodes[w].visited) {
+                q.push(w);
+                nodes[w].visited = true;
+                nodes[w].distance = nodes[u].distance + 1;
+                nodes[w].parent = u;
             }
         }
     }
-
-    return false;
-}
-
-// utility function to print the shortest distance
-// between source vertex and destination vertex
-void Graph::shortPathBFS(int s, int dest, int v){
-    // predecessor[i] array stores predecessor of
-    // i and distance array stores distance of i
-    // from s
-    int pred[v], dist[v];
-
-    if (bfs(s, dest, v, pred, dist) == false) {
-        cout << "Given source and destination"
-             << " are not connected";
-        return;
-    }
-
-    // vector path stores the shortest path
-    vector<int> path;
-    int crawl = dest;
-    path.push_back(crawl);
-    while (pred[crawl] != -1) {
-        path.push_back(pred[crawl]);
-        crawl = pred[crawl];
-    }
-
-    // distance from source is in distance array
-    cout << "Shortest path length is : "
-         << dist[dest];
-
-    // printing path from source to destination
-    cout << "\nPath is::\n";
-    for (int i = path.size() - 1; i >= 0; i--)
-        cout << path[i] << " ";
 }
 
 void Graph::dijkstra(int src, typeWeight type) {
@@ -224,16 +169,21 @@ void Graph::dijkstraLines(int src) {
     }
 }
 
-stack<Stop> Graph::shortPathDijkstra(int src, int dest, typeWeight type){
+stack<Stop> Graph::shortPath(int src, int dest, typeWeight type){
     if(type == LINE) dijkstraLines(src);
+    else if(type == STOPS) bfs(src);
     else dijkstra(src, type);
+
     stack<Stop> path;
-    if(nodes[dest].distance == INF) return path;
+    if(nodes[dest].distance == INF) throw NoPathAvailable();
     path.push(nodes[dest].stop);
     int v = dest;
     while (v != src){
+        if(v == -1)
+            throw NoPathAvailable();
         v = nodes[v].parent;
         path.push(nodes[v].stop);
     }
     return path;
 }
+
