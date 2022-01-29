@@ -19,10 +19,7 @@ Menu * Menu::invalidOption() {
 // --------------- Main Menu ---------------
 MainMenu::MainMenu():Menu(){}
 
-MainMenu::~MainMenu(){
-    //save the data to the .csv
-
-}
+MainMenu::~MainMenu(){}
 
 void MainMenu::show() {
 
@@ -131,7 +128,8 @@ Menu * SearchMenu::getNextMenu() {
 
     unsigned int options = 0;
     system("cmd /c cls");
-    cout << "Main Menu:\n\n";
+    cout << origin << " -> " << destination << std::endl;
+    cout << "Path Options:\n\n";
     cout << "[" << ++options << "] " << "Minimum Stops\n";
     cout << "[" << ++options << "] " << "Minimum Distance\n";
     cout << "[" << ++options << "] " << "Minimum Line Changes\n";
@@ -141,7 +139,17 @@ Menu * SearchMenu::getNextMenu() {
     if(!input::get(option)){
         return invalidOption();
     }
+
+    system("cmd /c cls");
+    cout << "|Options|" << std::endl;
+    if(walk){
+        cout << "Walk: Yes" << "| Distance: " << distance << std::endl;
+    }else{
+        cout << "Walk: No" << std::endl;
+    }
+
     if(walk){data->injectWalkingEdges(distance);}
+    cout << "Path: " << std::endl;
     switch(option){
         case 1:
             data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), STOPS);
@@ -152,7 +160,8 @@ Menu * SearchMenu::getNextMenu() {
         case 3:
             data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
             break;
-        case 4: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
+        case 4:
+            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
             break;
     }
     if(walk){data->deleteWalkingEdges();}
