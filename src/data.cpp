@@ -129,9 +129,9 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
         e.printError();
     }
 
-    cout << "Name\tCode\tZone\n";
+    cout << std::setw(35) << "Name" << std::setw(35) << "Code" << std::setw(35) << "Zone" << std::endl;
     while (!path.empty()){
-        cout << path.top().getName() << "\t" << path.top().getCode() << "\t" << path.top().getZone() << std::endl;
+        cout << std::setw(35) << path.top().getName() << std::setw(35) << path.top().getCode() << std::setw(35) << path.top().getZone() << std::endl;
         path.pop();
     }
 }
