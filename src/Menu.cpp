@@ -122,9 +122,11 @@ Menu * SearchMenu::getNextMenu() {
         return invalidOption();
     }
 
-    cout << " Distance \n ";
-    if(!input::get(distance)){
-        return invalidOption();
+    if(walk){
+        cout << " Distance \n ";
+        if(!input::get(distance)){
+            return invalidOption();
+        }
     }
 
     unsigned int options = 0;
@@ -141,7 +143,10 @@ Menu * SearchMenu::getNextMenu() {
     }
     if(walk){data->injectWalkingEdges(distance);}
     switch(option){
-        case 1: data->minStops(input::stringToInt(data,origin), input::stringToInt(data,destination));
+        case 1: data->minStops(input::stringToInt(data,origin),input::stringToInt(data,destination));
+        case 2: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), DIST);
+        case 3: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
+        case 4: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
         //TODO;
     }
     if(walk){data->deleteWalkingEdges();}

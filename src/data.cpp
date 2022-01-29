@@ -115,7 +115,7 @@ void Data::printAllStops(){
 }
 
 int Data::searchStop(std::string stop){
-    unordered_map<std::string, int>::iterator it = stopList.find(stop);
+    auto it = stopList.find(stop);
     if(it == stopList.end())
         return -1;
     else return it->second;
