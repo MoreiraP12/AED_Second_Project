@@ -18,7 +18,7 @@ void Graph::addNode(Stop s){
     nodes.push_back(n);
 }
 
-void Graph::addEdge(int src, int dest, std::string line, Weight weight) {
+void Graph::addEdge(int src, int dest, std::string line, Weight weight, bool onFoot) {
     if (src<1 || src>n || dest<1 || dest>n) return;
     for(auto edge : nodes[src].adj) {
         if (edge.dest == dest) {
@@ -31,7 +31,39 @@ void Graph::addEdge(int src, int dest, std::string line, Weight weight) {
     e.dest = dest;
     e.lines.insert(line);
     e.weight = weight;
+    e.onFoot = onFoot;
     nodes[src].adj.push_back(e);
+}
+void Graph::createWalkingEdges(double maxDist){
+    for(int j = 1; j <= n; j++){
+        Stop from = nodes[j].stop;
+        for(int i = 1; i <= n; i++) {
+            if (i != j) { Stop to = nodes[i].stop;
+                double dist = from.getDistance(to);
+                if (dist < maxDist){
+                    Weight w;
+                    w.dist = dist;
+                    if(from.getZone() != to.getZone()){
+                        w.zone = 1;
+                    }
+                    else (w.zone = 0);
+                    addEdge(n,i,"Walk",w);
+                }
+            }
+        }
+    }
+}
+
+void Graph::destroyWalkingEdges(){
+    for(int i =1 ; i <= n; i++){
+        vector<Edge>::iterator ptr;
+        for (ptr = nodes[i].adj.begin(); ptr < nodes[i].adj.end(); ptr++){
+            if(ptr->onFoot){
+                nodes[i].adj.erase(ptr);
+            }
+        }
+    }
+
 }
 
 bool Graph::bfs(int src, int dest, int v, int pred[], int dist[]){
@@ -65,9 +97,9 @@ bool Graph::bfs(int src, int dest, int v, int pred[], int dist[]){
     while (!queue.empty()) {
         int u = queue.front();
         queue.pop_front();
-        for (std::list<Edge>::const_iterator it = nodes[u].adj.begin(); it != nodes[u].adj.end(); ++it) {
+        for (std::vector<Edge>::const_iterator it = nodes[u].adj.begin(); it != nodes[u].adj.end(); ++it) {
             if (nodes[it->dest].visited == false) {
-                nodes[it->dest].visited == true;
+                nodes[it->dest].visited = true;
                 dist[it->dest] = dist[u] + 1;
                 pred[it->dest] = u;
                 queue.push_back(it->dest);

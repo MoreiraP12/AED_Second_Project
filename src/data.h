@@ -79,8 +79,16 @@ public:
      * @param typeWeight the weight parameter
      */
 
-    void minStops(int s, int dest, int v){
-        network.shortPathBFS(s,dest,v);
+    void injectWalkingEdges(double maxDist){
+        network.createWalkingEdges(maxDist);
+    }
+
+    void deleteWalkingEdges(){
+        network.destroyWalkingEdges();
+    }
+
+    void minStops(int s, int dest){
+        network.shortPathBFS(s,dest,network.size());
     }
 
     vector<string> getWalkingStops( int n, double maxDist);

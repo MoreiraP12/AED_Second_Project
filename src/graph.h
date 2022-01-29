@@ -27,7 +27,7 @@ struct Edge {
 };
 
 struct Node {
-    list<Edge> adj;
+    vector<Edge> adj;
     double distance;
     bool visited;
     Stop stop;
@@ -41,8 +41,8 @@ class Graph {
 public:
     Graph();
     void addNode(Stop s);
-    void addEdge(int src, int dest, std::string line, Weight weight);
-    void createWalkingEdges();
+    void addEdge(int src, int dest, std::string line, Weight weight, bool onFoot = false);
+    void createWalkingEdges(double maxDist);
     void destroyWalkingEdges();
     Stop elementAt(int i){
         return nodes[i].stop;
@@ -52,7 +52,7 @@ public:
     }
 
     bool bfs(int src, int dest, int v, int pred[], int dist[]);
-    void shortPathBFS(int s, int dest, int v) ;
+    void shortPathBFS(int s, int dest,int v) ;
     void dijkstra(int src, typeWeight type);
     void dijkstraLines(int src);
     stack<Stop> shortPathDijkstra(int src, int dest, typeWeight type);

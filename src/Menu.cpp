@@ -105,6 +105,7 @@ void SearchMenu::show() {
 Menu * SearchMenu::getNextMenu() {
     string origin, destination;
     bool walk;
+    double distance;
 
     cout << " Origin\n ";
     if(!input::get(origin) || !input::validateStop(data,origin)){
@@ -121,6 +122,11 @@ Menu * SearchMenu::getNextMenu() {
         return invalidOption();
     }
 
+    cout << " Distance \n ";
+    if(!input::get(distance)){
+        return invalidOption();
+    }
+
     unsigned int options = 0;
     system("cmd /c cls");
     cout << "Main Menu:\n\n";
@@ -133,10 +139,12 @@ Menu * SearchMenu::getNextMenu() {
     if(!input::get(option)){
         return invalidOption();
     }
+    if(walk){data->injectWalkingEdges(distance);}
     switch(option){
-        //case 1: data->minStops(s,dest,2488);
+        case 1: data->minStops(input::stringToInt(data,origin), input::stringToInt(data,destination));
         //TODO;
     }
+    if(walk){data->deleteWalkingEdges();}
 
     input::waitEnter();
     return nullptr;

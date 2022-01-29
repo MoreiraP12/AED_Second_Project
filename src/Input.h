@@ -74,6 +74,14 @@ namespace input {
      */
     bool validateStop(Data* data,const std::string& stop);
 
+    /**
+     * Transforms string stop inputs into their relative position in the graph
+     * @param data our singleton graph
+     * @param stop
+     * @return the int - relative position in the graph
+     */
+    int stringToInt(Data* data,const std::string& stop);
+
 }
 
 #endif //AED_PROJ1_INPUT_H

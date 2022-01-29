@@ -44,4 +44,8 @@ namespace input {
     bool validateStop(Data* data, const std::string& stop){
         return data->searchStop(stop) != -1;
     }
+
+    int stringToInt(Data* data,const std::string& stop){
+        return data->searchStop(stop);
+    }
 }
