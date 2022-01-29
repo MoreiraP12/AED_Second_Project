@@ -80,6 +80,8 @@ public:
      * @param typeWeight the weight parameter
      */
 
+    void showWalkingStops(int i, double distance);
+
     void injectWalkingEdges(double maxDist){
         network.createWalkingEdges(maxDist);
     }
@@ -88,7 +90,7 @@ public:
         network.destroyWalkingEdges();
     }
 
-    vector<string> getWalkingStops( int n, double maxDist);
+    vector<std::pair<Stop, double>> getWalkingStops( int n, double maxDist);
 
     void showPath(int src, int dest, typeWeight typeWeight);
 

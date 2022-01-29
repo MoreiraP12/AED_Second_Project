@@ -94,23 +94,24 @@ std::vector<std::string> Data::readCsv(std::string line) {
     }
     return ret;
 }
-vector<std::string> Data::getWalkingStops( int n, double maxDist){
-    vector<std::string> ret;
+vector<std::pair<Stop, double>> Data::getWalkingStops(int n, double maxDist){
+    vector<pair<Stop, double>> ret;
     Stop from = network.elementAt(n);
-    for(int i = 1; i < network.size(); i++){
-        if(i != n){
-            Stop to = network.elementAt(i);
-            double dist = from.getDistance(to);
-            if( dist < maxDist)
-                ret.push_back(to.getCode() + "  |  " + to.getName() + "  |  " + to_string(round( dist * 1000 ) ) + " m");
-        }
+    for(int i = 1; i <= n; i++){
+        if(i == n) continue;
+        Stop to = network.elementAt(i);
+        double dist = from.getDistance(to);
+        if( dist < maxDist)
+            ret.emplace_back(to,dist);
     }
     return ret;
 }
 
 void Data::printAllStops(){
+    cout << std::setw(35) << "Name" << std::setw(35) << "Code" << std::setw(35) << "Zone" << std::endl;
     for (auto const &pair: stopList) {
-        std::cout << pair.first << " " << pair.second  << "\n";
+        Stop stop = network.elementAt(pair.second);
+        cout << std::setw(35) << stop.getName() << std::setw(35) << stop.getCode() << std::setw(35) << stop.getZone() << std::endl;
     }
 }
 
@@ -133,5 +134,15 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
     while (!path.empty()){
         cout << std::setw(35) << path.top().getName() << std::setw(35) << path.top().getCode() << std::setw(35) << path.top().getZone() << std::endl;
         path.pop();
+    }
+}
+
+void Data::showWalkingStops(int i, double distance) {
+    vector<pair<Stop, double>> stops = getWalkingStops(i,distance);
+    auto it = stops.begin();
+    cout << std::setw(35) << "Name" << std::setw(17) << "Code" << std::setw(17) << "Zone" << std::setw(20) << "Distance(meters)" << std::endl;
+    while (it != stops.end()){
+        cout << std::setw(35) << it->first.getName() << std::setw(17) << it->first.getCode() << std::setw(17) << it->first.getZone() << std::setw(20) << round(it->second*1000) << std::endl;
+        it++;
     }
 }

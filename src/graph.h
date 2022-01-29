@@ -44,6 +44,7 @@ public:
     void addEdge(int src, int dest, std::string line, Weight weight, bool onFoot = false);
     void createWalkingEdges(double maxDist);
     void destroyWalkingEdges();
+
     Stop elementAt(int i){
         return nodes[i].stop;
     }

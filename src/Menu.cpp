@@ -79,14 +79,10 @@ Menu * NearbyStopsMenu::getNextMenu() {
         return invalidOption();
     }
 
-    vector<string> stops = data->getWalkingStops(17, 1.0);
-
-    for(auto x:  stops){
-        cout << x << endl;
-    }
+    system("cls");
+    cout << "Stops:" << std::endl;
+    data->showWalkingStops(17, distance);
     input::waitEnter();
-
-
     return nullptr ;
 }
 
