@@ -143,11 +143,17 @@ Menu * SearchMenu::getNextMenu() {
     }
     if(walk){data->injectWalkingEdges(distance);}
     switch(option){
-        case 1: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), STOPS);
-        case 2: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), DIST);
-        case 3: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
+        case 1:
+            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), STOPS);
+            break;
+        case 2:
+            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), DIST);
+            break;
+        case 3:
+            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
+            break;
         case 4: data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
-        //TODO;
+            break;
     }
     if(walk){data->deleteWalkingEdges();}
 
