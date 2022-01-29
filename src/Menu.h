@@ -50,23 +50,37 @@ public:
  *
  * Useful for our user to make know which stops exits and to which stop he might want to go
  */
-class StopsMenu : public Menu{
+class AllStopsMenu : public Menu{
 public:
-    explicit StopsMenu();
+    explicit AllStopsMenu();
+    void show() override;
+    Menu * getNextMenu() override;
+};
+/**
+ * Partial listing of stops
+ *
+ * Displays all the stops near you
+ * How near you want it to be is solely determined by you
+ */
+class NearbyStopsMenu : public Menu{
+public:
+    explicit NearbyStopsMenu();
     void show() override;
     Menu * getNextMenu() override;
 };
 
-class MinimumStopsMenu : public Menu{
+/**
+ * Search the best path according to user requests
+ *
+ * Displays the best path to get to a desired destination
+ */
+class SearchMenu : public Menu{
 public:
-    explicit MinimumStopsMenu();
+    explicit SearchMenu();
     void show() override;
     Menu * getNextMenu() override;
 };
 
-class MinimumStopsAlgorithmMenu : public Menu{
-public:
-    explicit MinimumStopsAlgorithmMenu();
-    void show() override;
-    Menu * getNextMenu() override;
-};
+
+
+

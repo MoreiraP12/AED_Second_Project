@@ -28,11 +28,10 @@ void MainMenu::show() {
 
     unsigned int options = 0;
     system("cmd /c cls");
-    data->showPath(8,10, LINE);
-    //data->showPath(8,10, zone);
     cout << "Main Menu:\n\n";
     cout << "[" << ++options << "] " << "All Stops\n";
-    cout << "[" << ++options << "] " << "Minimum Amount of Stops\n";
+    cout << "[" << ++options << "] " << "Stops near me\n";
+    cout << "[" << ++options << "] " << "Origin -> Destination\n";
     cout << "[0] Exit\n";
 }
 
@@ -43,33 +42,69 @@ Menu * MainMenu::getNextMenu() {
     }
     switch(option){
         case 0: return nullptr;
-        case 1: return new StopsMenu();
-        case 2: return new MinimumStopsMenu();
+        case 1: return new AllStopsMenu();
+        case 2: return new NearbyStopsMenu();
+        case 3: return new SearchMenu();
     }
     return invalidOption();
 }
 
 // ---------------  Stops Menu ---------------
-StopsMenu::StopsMenu() : Menu() {}
-void StopsMenu::show() {
+AllStopsMenu::AllStopsMenu() : Menu() {}
+void AllStopsMenu::show() {
     system("cls");
-    //data->printStops(); //TODO
+    data->printAllStops();
 
 }
-Menu * StopsMenu::getNextMenu() {
+Menu * AllStopsMenu::getNextMenu() {
     input::waitEnter();
     return nullptr ;
 }
 
-
-// --------------- Minimum Stops Menu ---------------
-MinimumStopsMenu::MinimumStopsMenu() : Menu() {}
-void MinimumStopsMenu::show() {
+// ---------------  Nearby Stops Menu ---------------
+NearbyStopsMenu::NearbyStopsMenu() : Menu() {}
+void NearbyStopsMenu::show() {
     system("cls");
-    cout << "\n Please tells us in which station you're and where you want go!\n \n";
+    cout << "Please tell us in which station you're and how much you're willing to walk" << endl;
+
 }
-Menu * MinimumStopsMenu::getNextMenu() {
+Menu * NearbyStopsMenu::getNextMenu() {
+    string origin;
+    double distance;
+
+    cout << " Origin\n ";
+    if(!input::get(origin)){
+        return invalidOption();
+    }
+
+    cout << " Distance\n ";
+    if(!input::get(distance)){
+        return invalidOption();
+    }
+
+    vector<string> stops = data->getWalkingStops(17, 1.0);
+
+    for(auto x:  stops){
+        cout << x << endl;
+    }
+    input::waitEnter();
+
+
+    return nullptr ;
+}
+
+
+// ---------------  Search Stops Menu ---------------
+SearchMenu::SearchMenu() : Menu() {}
+void SearchMenu::show() {
+    system("cls");
+    cout << "Please tell us in which station you're and where you want to go" << endl;
+    cout << "You'll also be presented with the different option to you're preferred search method" << endl;
+
+}
+Menu * SearchMenu::getNextMenu() {
     string origin, destination;
+    bool walk;
 
     cout << " Origin\n ";
     if(!input::get(origin) || !input::validateStop(data,origin)){
@@ -81,28 +116,29 @@ Menu * MinimumStopsMenu::getNextMenu() {
         return invalidOption();
     }
 
-    input::waitEnter();
-    return new MinimumStopsAlgorithmMenu() ;
-}
+    cout << " Walk (Yes: 1 | No: 0) \n ";
+    if(!input::get(walk )){
+        return invalidOption();
+    }
 
-//  --------------- Minimum Stops Algorithm Menu ---------------
-
-MinimumStopsAlgorithmMenu::MinimumStopsAlgorithmMenu() : Menu() {}
-void MinimumStopsAlgorithmMenu::show() {
-    system("cls");
-    //Here should be the chain of minimum stops for the desired path (call)
-    int options;
+    unsigned int options = 0;
+    system("cmd /c cls");
     cout << "Main Menu:\n\n";
-    cout << "[" << ++options << "] " << "Back\n";
+    cout << "[" << ++options << "] " << "Minimum Stops\n";
+    cout << "[" << ++options << "] " << "Minimum Distance\n";
+    cout << "[" << ++options << "] " << "Minimum Line Changes\n";
+    cout << "[" << ++options << "] " << "Cheaper\n";
 
-}
-Menu * MinimumStopsAlgorithmMenu::getNextMenu() {
     int option;
     if(!input::get(option)){
         return invalidOption();
     }
     switch(option){
-        case 1: return nullptr;
+        //case 1: data->minStops(s,dest,2488);
+        //TODO;
     }
-    return invalidOption();
+
+    input::waitEnter();
+    return nullptr;
 }
+

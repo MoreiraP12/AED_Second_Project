@@ -94,15 +94,25 @@ std::vector<std::string> Data::readCsv(std::string line) {
     }
     return ret;
 }
-
-/*
->>>>>>> 3ad4ca56dbd3e2b1c471f703c7a139df7b30fce4
-void Data::printStops(){
-    for (auto const &pair: stopList) {
-        std::cout << pair.first << " " << pair.second.first.getName() << " " << pair.second.first.getZone() << "\n";
+vector<std::string> Data::getWalkingStops( int n, double maxDist){
+    vector<std::string> ret;
+    Stop from = network.elementAt(n);
+    for(int i = 1; i < network.size(); i++){
+        if(i != n){
+            Stop to = network.elementAt(i);
+            double dist = from.getDistance(to);
+            if( dist < maxDist)
+                ret.push_back(to.getCode() + "  |  " + to.getName() + "  |  " + to_string(round( dist * 1000 ) ) + " m");
+        }
     }
+    return ret;
+}
 
-}*/
+void Data::printAllStops(){
+    for (auto const &pair: stopList) {
+        std::cout << pair.first << " " << pair.second  << "\n";
+    }
+}
 
 int Data::searchStop(std::string stop){
     unordered_map<std::string, int>::iterator it = stopList.find(stop);

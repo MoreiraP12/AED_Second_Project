@@ -58,12 +58,10 @@ public:
      */
     void loadLines();
 
-    Stop findStop(std::string stop);
-
     /**
      * Prints all the stops stored in hashtable for user convenience
      */
-    void printStops();
+    void printAllStops();
 
 
     /**
@@ -80,6 +78,13 @@ public:
      * @param dest the destination node
      * @param typeWeight the weight parameter
      */
+
+    void minStops(int s, int dest, int v){
+        network.shortPathBFS(s,dest,v);
+    }
+
+    vector<string> getWalkingStops( int n, double maxDist);
+
     void showPath(int src, int dest, typeWeight typeWeight){//TODO melhorar a apresentação
         stack<Stop> path = network.shortPathDijkstra(src,dest,typeWeight);
         while (path.size() != 1){

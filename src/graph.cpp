@@ -34,6 +34,88 @@ void Graph::addEdge(int src, int dest, std::string line, Weight weight) {
     nodes[src].adj.push_back(e);
 }
 
+bool Graph::bfs(int src, int dest, int v, int pred[], int dist[]){
+    // a queue to maintain queue of vertices whose
+    // adjacency list is to be scanned as per normal
+    // DFS algorithm
+    list<int> queue;
+
+    // boolean array visited[] which stores the
+    // information whether ith vertex is reached
+    // at least once in the Breadth first search
+    bool visited[v];
+
+    // initially all vertices are unvisited
+    // so v[i] for all i is false
+    // and as no path is yet constructed
+    // dist[i] for all i set to infinity
+    for (int i = 0; i < v; i++) {
+        visited[i] = false;
+        dist[i] = INT_MAX;
+        pred[i] = -1;
+    }
+
+    // now source is first to be visited and
+    // distance from source to itself should be 0
+    visited[src] = true;
+    dist[src] = 0;
+    queue.push_back(src);
+
+    // standard BFS algorithm
+    while (!queue.empty()) {
+        int u = queue.front();
+        queue.pop_front();
+        for (std::list<Edge>::const_iterator it = nodes[u].adj.begin(); it != nodes[u].adj.end(); ++it) {
+            if (nodes[it->dest].visited == false) {
+                nodes[it->dest].visited == true;
+                dist[it->dest] = dist[u] + 1;
+                pred[it->dest] = u;
+                queue.push_back(it->dest);
+
+                // We stop BFS when we find
+                // destination.
+                if (it->dest == dest)
+                    return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+// utility function to print the shortest distance
+// between source vertex and destination vertex
+void Graph::shortPathBFS(int s, int dest, int v){
+    // predecessor[i] array stores predecessor of
+    // i and distance array stores distance of i
+    // from s
+    int pred[v], dist[v];
+
+    if (bfs(s, dest, v, pred, dist) == false) {
+        cout << "Given source and destination"
+             << " are not connected";
+        return;
+    }
+
+    // vector path stores the shortest path
+    vector<int> path;
+    int crawl = dest;
+    path.push_back(crawl);
+    while (pred[crawl] != -1) {
+        path.push_back(pred[crawl]);
+        crawl = pred[crawl];
+    }
+
+    // distance from source is in distance array
+    cout << "Shortest path length is : "
+         << dist[dest];
+
+    // printing path from source to destination
+    cout << "\nPath is::\n";
+    for (int i = path.size() - 1; i >= 0; i--)
+        cout << path[i] << " ";
+}
+
 void Graph::dijkstra(int src, typeWeight type) {
     MinHeap<int, double> q(n-1, -1);
     for (int v=1; v<=n; v++) {

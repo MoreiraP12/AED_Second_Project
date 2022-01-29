@@ -21,6 +21,7 @@ struct Weight{
 
 struct Edge {
     int dest;
+    bool onFoot;
     set<std::string> lines;
     Weight weight;
 };
@@ -41,12 +42,17 @@ public:
     Graph();
     void addNode(Stop s);
     void addEdge(int src, int dest, std::string line, Weight weight);
+    void createWalkingEdges();
+    void destroyWalkingEdges();
     Stop elementAt(int i){
         return nodes[i].stop;
     }
     int size(){
         return nodes.size();
     }
+
+    bool bfs(int src, int dest, int v, int pred[], int dist[]);
+    void shortPathBFS(int s, int dest, int v) ;
     void dijkstra(int src, typeWeight type);
     void dijkstraLines(int src);
     stack<Stop> shortPathDijkstra(int src, int dest, typeWeight type);
