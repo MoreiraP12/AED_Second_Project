@@ -141,6 +141,9 @@ Menu * SearchMenu::getNextMenu() {
             destinationNode = input::coordsToInt(data, destinationLongitude, destinationLatitude);
             break;
         }
+        default:{
+            return invalidOption();
+        }
     }
 
     cout << " Walk (Yes: 1 | No: 0) \n ";
