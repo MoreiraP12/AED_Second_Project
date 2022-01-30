@@ -14,7 +14,7 @@ Weight Data::getWeight(const Stop& s1,const Stop& s2){
 //Add error checks to file openings
 void Data::readStops() {
     int i = 1;
-    std::ifstream infile("dataset/stops.csv");
+    std::ifstream infile("cmake-build-debug/dataset/stops.csv");
     std::string line;
     std::getline(infile, line);
     while(std::getline(infile, line)){
@@ -35,7 +35,7 @@ void Data::loadLines() {
     std::ifstream infile;
     bool flag = false;
     while(it != lines.end()){
-        std::string fileName = "dataset/line_" + it->first;
+        std::string fileName = "cmake-build-debug/dataset/line_" + it->first;
         if(!flag) fileName += "_0";
         else fileName += "_1";
         fileName += ".csv";
@@ -65,7 +65,7 @@ void Data::loadLines() {
 }
 
 void Data::readLines(){
-    std::ifstream infile("dataset/lines.csv");
+    std::ifstream infile("cmake-build-debug/dataset/lines.csv");
     std::string line;
     std::getline(infile, line);
     while(std::getline(infile, line)){

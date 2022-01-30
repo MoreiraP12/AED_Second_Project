@@ -4,6 +4,7 @@
 #include "ShowStop.h"
 #include <cmath>
 #include <stack>
+#include<algorithm>
 #include <iomanip>
 
 Graph::Graph() {
@@ -142,26 +143,20 @@ void Graph::dijkstraLines(int src) {
     while (q.getSize()>0) {
         int u = q.removeMin();
         nodes[u].visited = true;
+        Node n = nodes[u];
         for (auto e : nodes[u].adj) {
             int v = e.dest;
-            double w;
-            set<std::string> lines;
-            if(nodes[u].parent != -1){
-                for (auto ed : nodes[nodes[u].parent].adj) {
-                    if (ed.dest == u)
-                        lines = ed.lines;
+            double w = 0;
+            if(u != src) {
+                set<std::string> linesParent;
+                if(nodes[u].parent != -1)
+                    linesParent = getLines(nodes[u].parent, u);
+                set<std::string> linesThis = getLines(u, v);
+                set<std::string> intersect;
+                std::set_intersection(linesParent.begin(), linesParent.end(), linesThis.begin(), linesThis.end(),
+                                      std::inserter(intersect, intersect.begin()));
+                if(intersect.empty()) w = 1;
                 }
-                bool change = true;
-                for (auto line : lines) {
-                    if (e.lines.find(line) != lines.end()) {
-
-                        change = false;
-                        break;
-                    }
-                }
-                //if not, w = 1
-                if (change) w = 1;
-            }
             if (!nodes[v].visited && nodes[u].distance + w < nodes[v].distance) {
                 nodes[v].distance = nodes[u].distance + w;
                 q.decreaseKey(v, nodes[v].distance);
@@ -215,8 +210,6 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
 
 set<string> Graph::getLines(int src, int dest){
     for(auto edge: nodes[src].adj){
-        if(edge.dest == dest && edge.onFoot)
-            return {"Walk"};
         if(edge.dest == dest)
             return edge.lines;
     }
