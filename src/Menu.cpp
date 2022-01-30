@@ -106,7 +106,7 @@ Menu * SearchMenu::getNextMenu() {
     }
 
     cout << " Destination\n ";
-    if(!input::get(destination ) || !input::validateStop(data,origin)){
+    if(!input::get(destination ) || !input::validateStop(data,destination)){
         return invalidOption();
     }
 

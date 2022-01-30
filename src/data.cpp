@@ -133,14 +133,12 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
     cout << std::setw(35) << "Name" << std::setw(10) << "Code" << std::setw(10) << "Zone"  << std::setw(20) << "NextLine" << std::endl;
     while (!path.empty()){
         cout << std::setw(35) << path.top().stop.getName() << std::setw(10) << path.top().stop.getCode() << std::setw(10) << path.top().stop.getZone() << setw(17);
-        if(path.top().lines.size() == 1 && *path.top().lines.begin() == "")
-            cout << endl;
-        else{
-            for(const auto& element: path.top().lines){
-                cout << element << " OR ";
-            }
-            cout << endl;
-        }
+        auto it = path.top().lines.begin();
+        cout << *it;
+        it++;
+        while(it != path.top().lines.end())
+            cout << "/" << *it ;
+        cout << endl;
         path.pop();
     }
 }

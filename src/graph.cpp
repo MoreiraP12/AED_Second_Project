@@ -53,7 +53,7 @@ void Graph::createWalkingEdges(double maxDist){
                         w.zone = 1;
                     }
                     else (w.zone = 0);
-                    addEdge(n,i,"Walk",w);
+                    addEdge(j,i,"Walk",w, true);
                 }
             }
         }
@@ -144,7 +144,6 @@ void Graph::dijkstraLines(int src) {
     while (q.getSize()>0) {
         int u = q.removeMin();
         nodes[u].visited = true;
-        Node n = nodes[u];
         for (auto e : nodes[u].adj) {
             int v = e.dest;
             double w = 0;
@@ -192,8 +191,8 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
 }
 
 set<string> Graph::getLines(int src, int dest){
-    for(auto edge: nodes[src].adj){
-        if(edge.dest == dest)
+    for(auto edge: nodes[src].adj) {
+        if (edge.dest == dest)
             return edge.lines;
     }
     throw NoPathAvailable();
