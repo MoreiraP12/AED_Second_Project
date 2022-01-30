@@ -123,16 +123,24 @@ int Data::searchStop(std::string stop){
 }
 
 void Data::showPath(int src, int dest, typeWeight typeWeight){
-    stack<Stop> path;
+    stack<ShowStop> path;
     try{
         path = network.shortPath(src, dest, typeWeight);
     }catch (NoPathAvailable& e){
         e.printError();
     }
 
-    cout << std::setw(35) << "Name" << std::setw(35) << "Code" << std::setw(35) << "Zone" << std::endl;
+    cout << std::setw(35) << "Name" << std::setw(10) << "Code" << std::setw(10) << "Zone"  << std::setw(20) << "NextLine" << std::endl;
     while (!path.empty()){
-        cout << std::setw(35) << path.top().getName() << std::setw(35) << path.top().getCode() << std::setw(35) << path.top().getZone() << std::endl;
+        cout << std::setw(35) << path.top().stop.getName() << std::setw(10) << path.top().stop.getCode() << std::setw(10) << path.top().stop.getZone() << setw(17);
+        if(path.top().lines.size() == 1 && *path.top().lines.begin() == "")
+            cout << endl;
+        else{
+            for(const auto& element: path.top().lines){
+                cout << element << " OR ";
+            }
+            cout << endl;
+        }
         path.pop();
     }
 }

@@ -24,7 +24,6 @@ namespace input {
     }
 
     void trimString(std::string &str) {
-        // Remove whitespace from start and end of the string
         auto front = std::find_if_not(str.begin(), str.end(), [](int c) {
             return std::isspace(c);
         });
@@ -33,8 +32,6 @@ namespace input {
         }).base();
         str = back <= front ? std::string() : std::string(front, back);
 
-        // Convert multiple whitespaces into a single one
-        // For example "Viewer   Complete      Name" would become "Viewer Complete Name"
         auto new_end = std::unique(str.begin(), str.end(), [](char a, char b) {
             return (a == b) && (a == ' ');
         });

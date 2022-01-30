@@ -1,8 +1,10 @@
 #include "graph.h"
 #include "minHeap.h"
 #include "Exceptions.h"
+#include "ShowStop.h"
 #include <cmath>
 #include <stack>
+#include <iomanip>
 
 Graph::Graph() {
     n = 1;
@@ -168,7 +170,7 @@ void Graph::dijkstraLines(int src) {
         }
     }
 }
-
+/*
 stack<Stop> Graph::shortPath(int src, int dest, typeWeight type){
     if(type == LINE) dijkstraLines(src);
     else if(type == STOPS) bfs(src);
@@ -185,5 +187,38 @@ stack<Stop> Graph::shortPath(int src, int dest, typeWeight type){
         path.push(nodes[v].stop);
     }
     return path;
+}*/
+
+stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
+    if(type == LINE) dijkstraLines(src);
+    else if(type == STOPS) bfs(src);
+    else dijkstra(src, type);
+
+    stack<ShowStop> path;
+    if(nodes[dest].distance == INF) throw NoPathAvailable();
+    path.push({nodes[dest].stop,{""}});
+    int v = dest;
+    while (v != src){
+        if(v == -1)
+            throw NoPathAvailable();
+        std::set<string> lines;
+        try{
+            lines = getLines(nodes[v].parent, v);
+        }catch(NoPathAvailable& e){
+            e.printError();
+        }
+        v = nodes[v].parent;//TODO
+        path.push({nodes[v].stop, lines});
+    }
+    return path;
 }
 
+set<string> Graph::getLines(int src, int dest){
+    for(auto edge: nodes[src].adj){
+        if(edge.dest == dest && edge.onFoot)
+            return {"Walk"};
+        if(edge.dest == dest)
+            return edge.lines;
+    }
+    throw NoPathAvailable();
+}

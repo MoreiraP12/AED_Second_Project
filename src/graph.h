@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stack>
 #include "Stop.h"
+#include "ShowStop.h"
 #include <set>
 #define INF (INT_MAX/2)
 
@@ -52,10 +53,11 @@ public:
         return nodes.size();
     }
 
+    set<string> getLines(int src, int dest);
     void bfs(int v);
     void dijkstra(int src, typeWeight type);
     void dijkstraLines(int src);
-    stack<Stop> shortPath(int src, int dest, typeWeight type);
+    stack<ShowStop> shortPath(int src, int dest, typeWeight type);
 };
 
 #endif

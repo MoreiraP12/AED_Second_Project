@@ -9,4 +9,4 @@ add_executable(aed_proj_2 main.cpp
         src/Stop.h src/Stop.cpp
         src/data.cpp src/data.h
         src/graph.h src/graph.cpp
-        cmake-build-debug/dataset src/Exceptions.h)
+        cmake-build-debug/dataset src/Exceptions.h src/ShowStop.h)
