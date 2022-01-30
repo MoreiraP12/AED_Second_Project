@@ -1,6 +1,5 @@
 //Created by Pedro Barbeira
 #include "data.h"
-#include "Exceptions.h"
 
 
 Weight Data::getWeight(const Stop& s1,const Stop& s2){
@@ -15,6 +14,9 @@ Weight Data::getWeight(const Stop& s1,const Stop& s2){
 void Data::readStops() {
     int i = 1;
     std::ifstream infile("cmake-build-debug/dataset/stops.csv");
+    if(!infile.is_open()){
+        throw ErrorOpeningInfile("stops.csv");
+    }
     std::string line;
     std::getline(infile, line);
     while(std::getline(infile, line)){
@@ -41,6 +43,9 @@ void Data::loadLines() {
         fileName += ".csv";
         infile.open(fileName);
         if(!infile.is_open()){
+            throw ErrorOpeningInfile(fileName);
+        }
+        if(!infile.is_open()){
             std::cout << "Error opening " + fileName << endl;
         }
         else{
@@ -66,6 +71,9 @@ void Data::loadLines() {
 
 void Data::readLines(){
     std::ifstream infile("cmake-build-debug/dataset/lines.csv");
+    if(!infile.is_open()){
+        throw ErrorOpeningInfile("lines.csv");
+    }
     std::string line;
     std::getline(infile, line);
     while(std::getline(infile, line)){
@@ -94,6 +102,7 @@ std::vector<std::string> Data::readCsv(std::string line) {
     }
     return ret;
 }
+
 vector<std::pair<Stop, double>> Data::getWalkingStops(int n, double maxDist){
     vector<pair<Stop, double>> ret;
     Stop from = network.elementAt(n);
@@ -115,7 +124,7 @@ void Data::printAllStops(){
     }
 }
 
-int Data::searchStop(std::string stop){
+int Data::searchStop(const std::string& stop){
     auto it = stopList.find(stop);
     if(it == stopList.end())
         return -1;
@@ -127,7 +136,7 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
     try{
         path = network.shortPath(src, dest, typeWeight);
     }catch (NoPathAvailable& e){
-        e.printError();
+        NoPathAvailable::printError();
     }
 
     cout << std::setw(35) << "Name" << std::setw(10) << "Code" << std::setw(10) << "Zone"  << std::setw(20) << "NextLine" << std::endl;

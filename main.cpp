@@ -4,8 +4,10 @@
 
 int main() {
 
+    Data* data = new Data();
+
     std::stack<Menu *> menus;
-    menus.push(new MainMenu());
+    menus.push(new MainMenu(data));
 
     while(!menus.empty()){
         menus.top()->show();

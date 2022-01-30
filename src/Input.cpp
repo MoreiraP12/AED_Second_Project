@@ -3,7 +3,6 @@
 
 
 #include "Input.h"
-#include "data.h"
 
 using namespace std;
 

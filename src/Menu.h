@@ -14,13 +14,12 @@ using namespace std;
  * show() - responsible for the "view" in the console, provides useful messages to the user or important info in text form
  * getNextMenu() - responsible for the behaviour aspect of the program, receives inputs and returns the new path in form of a pointer
  */
-
 class Menu{
 protected:
-    static Data* data;
+    Data* data;
     Menu * invalidOption();
 public:
-    explicit Menu();
+    explicit Menu(Data* d) : data(d){};
     virtual ~Menu() = default;
     /**
      * Show information associated with the menu
@@ -40,7 +39,7 @@ public:
  */
 class MainMenu : public Menu {
 public:
-    explicit MainMenu();
+    explicit MainMenu(Data* d) : Menu(d){};
     ~MainMenu() override;
     void show() override;
     Menu * getNextMenu() override;
@@ -52,7 +51,7 @@ public:
  */
 class AllStopsMenu : public Menu{
 public:
-    explicit AllStopsMenu();
+    explicit AllStopsMenu(Data* d) : Menu(d){};
     void show() override;
     Menu * getNextMenu() override;
 };
@@ -64,7 +63,7 @@ public:
  */
 class NearbyStopsMenu : public Menu{
 public:
-    explicit NearbyStopsMenu();
+    explicit NearbyStopsMenu(Data* d) : Menu(d){};
     void show() override;
     Menu * getNextMenu() override;
 };
@@ -76,7 +75,7 @@ public:
  */
 class SearchMenu : public Menu{
 public:
-    explicit SearchMenu();
+    explicit SearchMenu(Data* d) : Menu(d){};
     void show() override;
     Menu * getNextMenu() override;
 };

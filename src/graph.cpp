@@ -1,28 +1,25 @@
 #include "graph.h"
 #include "minHeap.h"
 #include "Exceptions.h"
-#include "ShowStop.h"
-#include <cmath>
 #include <stack>
 #include<algorithm>
-#include <iomanip>
 
 Graph::Graph() {
     n = 1;
-    Node n;
-    nodes.push_back(n);
+    Node start;
+    nodes.push_back(start);
 }
 
-void Graph::addNode(Stop s){
+void Graph::addNode(const Stop& s){
     n++;
-    Node n;
-    n.distance = 0;
-    n.visited = false;
-    n.stop = s;
-    nodes.push_back(n);
+    Node newNode;
+    newNode.distance = 0;
+    newNode.visited = false;
+    newNode.stop = s;
+    nodes.push_back(newNode);
 }
 
-void Graph::addEdge(int src, int dest, std::string line, Weight weight, bool onFoot) {
+void Graph::addEdge(int src, int dest, const std::string& line, Weight weight, bool onFoot) {
     if (src<1 || src>n || dest<1 || dest>n) return;
     for(auto edge : nodes[src].adj) {
         if (edge.dest == dest) {
@@ -47,7 +44,7 @@ void Graph::createWalkingEdges(double maxDist){
             if (i != j) { Stop to = nodes[i].stop;
                 double dist = from.getDistance(to);
                 if (dist < maxDist){
-                    Weight w;
+                    Weight w{};
                     w.dist = dist;
                     if(from.getZone() != to.getZone()){
                         w.zone = 1;
@@ -72,19 +69,19 @@ void Graph::destroyWalkingEdges(){
 
 }
 
-void Graph::bfs(int v) {
+void Graph::bfs(int x) {
     for (int v=1; v<=n; v++){
         nodes[v].visited = false;
         nodes[v].distance = -1;
         nodes[v].parent = -1;
     }
     queue<int> q;
-    q.push(v);
-    nodes[v].distance = 0;
-    nodes[v]. visited = true;
+    q.push(x);
+    nodes[x].distance = 0;
+    nodes[x]. visited = true;
     while (!q.empty()) {
         int u = q.front(); q.pop();
-        for (auto e : nodes[u].adj) {
+        for (auto & e : nodes[u].adj) {
             int w = e.dest;
             if (!nodes[w].visited) {
                 q.push(w);
@@ -110,16 +107,13 @@ void Graph::dijkstra(int src, typeWeight type) {
     while (q.getSize()>0) {
         int u = q.removeMin();
         nodes[u].visited = true;
-        for (auto e : nodes[u].adj) {
+        for (const auto& e : nodes[u].adj) {
             int v = e.dest;
             double w;
             switch (type) {
-                case DIST:
-                    w = e.weight.dist;
-                    break;
-                case ZONE:
-                    w = e.weight.zone;
-                    break;
+                case DIST: w = e.weight.dist; break;
+                case ZONE: w = e.weight.zone; break;
+                case LINE: case STOPS: break;
             }
             if (!nodes[v].visited && nodes[u].distance + w < nodes[v].distance) {
                 nodes[v].distance = nodes[u].distance + w;
@@ -144,7 +138,7 @@ void Graph::dijkstraLines(int src) {
     while (q.getSize()>0) {
         int u = q.removeMin();
         nodes[u].visited = true;
-        for (auto e : nodes[u].adj) {
+        for (const auto& e : nodes[u].adj) {
             int v = e.dest;
             double w = 0;
             if(u != src) {
@@ -182,7 +176,7 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
         try{
             lines = getLines(nodes[v].parent, v);
         }catch(NoPathAvailable& e){
-            e.printError();
+            NoPathAvailable::printError();
         }
         v = nodes[v].parent;//TODO
         path.push({nodes[v].stop, lines});
@@ -191,7 +185,7 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
 }
 
 set<string> Graph::getLines(int src, int dest){
-    for(auto edge: nodes[src].adj) {
+    for(const auto& edge: nodes[src].adj) {
         if (edge.dest == dest)
             return edge.lines;
     }

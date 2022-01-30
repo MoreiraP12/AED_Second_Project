@@ -1,13 +1,7 @@
 #include "Menu.h"
 #include "Input.h"
-#include "data.h"
 
 using namespace std;
-
-Data* Menu::data= new Data();
-
-Menu::Menu() {
-}
 
 Menu * Menu::invalidOption() {
     cout << "Invalid option" << std::endl;
@@ -17,9 +11,10 @@ Menu * Menu::invalidOption() {
 }
 
 // --------------- Main Menu ---------------
-MainMenu::MainMenu():Menu(){}
 
-MainMenu::~MainMenu(){}
+MainMenu::~MainMenu(){
+    delete data;
+}
 
 void MainMenu::show() {
 
@@ -38,16 +33,14 @@ Menu * MainMenu::getNextMenu() {
         return invalidOption();
     }
     switch(option){
-        case 0: return nullptr;
-        case 1: return new AllStopsMenu();
-        case 2: return new NearbyStopsMenu();
-        case 3: return new SearchMenu();
+        case 1: return new AllStopsMenu(data);
+        case 2: return new NearbyStopsMenu(data);
+        case 3: return new SearchMenu(data);
+        default: return nullptr;
     }
-    return invalidOption();
 }
 
 // ---------------  Stops Menu ---------------
-AllStopsMenu::AllStopsMenu() : Menu() {}
 void AllStopsMenu::show() {
     system("cls");
     data->printAllStops();
@@ -59,7 +52,6 @@ Menu * AllStopsMenu::getNextMenu() {
 }
 
 // ---------------  Nearby Stops Menu ---------------
-NearbyStopsMenu::NearbyStopsMenu() : Menu() {}
 void NearbyStopsMenu::show() {
     system("cls");
     cout << "Please tell us in which station you're and how much you're willing to walk" << endl;
@@ -88,7 +80,6 @@ Menu * NearbyStopsMenu::getNextMenu() {
 
 
 // ---------------  Search Stops Menu ---------------
-SearchMenu::SearchMenu() : Menu() {}
 void SearchMenu::show() {
     system("cls");
     cout << "Please tell us in which station you're and where you want to go" << endl;
@@ -159,6 +150,7 @@ Menu * SearchMenu::getNextMenu() {
         case 4:
             data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
             break;
+        default: break;
     }
     if(walk){data->deleteWalkingEdges();}
 

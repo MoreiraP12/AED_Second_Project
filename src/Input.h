@@ -14,8 +14,6 @@
 
 using namespace std;
 
-#define MAX_NAME_LENGHT 20
-
 namespace input {
     /**
      * Get a string from cin

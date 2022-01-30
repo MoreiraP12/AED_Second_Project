@@ -7,6 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <iomanip>
+#include "Exceptions.h"
 #include "graph.h"
 
 class Data {
@@ -20,7 +21,7 @@ class Data {
      * @param line the .csv line to be broken up
      * @return a vector with each field of the .csv line
      */
-    std::vector<std::string> readCsv(std::string line);
+    std::vector<std::string> static readCsv(std::string line);
 
     /**
      * Returns the weight of the edge that connects two stops
@@ -28,16 +29,7 @@ class Data {
      * @param s2 the second stop
      * @return the weight of the edge that connects them
      */
-    Weight getWeight(const Stop& s1,const Stop& s2);
-
-public:
-
-    Data(){
-        network = Graph();
-        this->readStops();
-        this->readLines();
-        this->loadLines();
-    }
+    Weight static getWeight(const Stop& s1,const Stop& s2);
 
     /**
      * Reads and parses stops from the stops.csv file and saves them in
@@ -59,6 +51,25 @@ public:
      */
     void loadLines();
 
+public:
+
+    /**
+     * Constructor for Data class. Reads the dataset files and loads them
+     * into the system using the private methods. Handles exceptions in
+     * case a file doesn't open;
+     */
+    Data(){
+        network = Graph();
+        try {
+            this->readStops();
+            this->readLines();
+            this->loadLines();
+        }
+        catch(ErrorOpeningInfile& e){
+            ErrorOpeningInfile::print();
+        }
+    }
+
     /**
      * Prints all the stops stored in hashtable for user convenience
      */
@@ -70,7 +81,7 @@ public:
      * in order to validate inputs
      * @return the index of the id, if it exists; -1 otherwise
      */
-    int searchStop(std::string);
+    int searchStop(const std::string&);
 
     /**
      * Shows the shortest path between two stops according to the desired
@@ -79,19 +90,33 @@ public:
      * @param dest the destination node
      * @param typeWeight the weight parameter
      */
-
     void showWalkingStops(int i, double distance);
 
+    /**
+     * Indejcts edges between stops that are below a certain walking distance,
+     * @param maxDist the maximum distance between two stops
+     */
     void injectWalkingEdges(double maxDist){
         network.createWalkingEdges(maxDist);
     }
 
+    /**
+     * Removes from the graph "walking'
+     */
     void deleteWalkingEdges(){
         network.destroyWalkingEdges();
     }
 
+
     vector<std::pair<Stop, double>> getWalkingStops( int n, double maxDist);
 
+    /**
+     * Prints the path between two stops, depending on user input. Allows for
+     * different search paramters
+     * @param src the source Stop
+     * @param dest the destination Stop
+     * @param typeWeight the search parameter
+     */
     void showPath(int src, int dest, typeWeight typeWeight);
 
 };
