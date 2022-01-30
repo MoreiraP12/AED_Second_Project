@@ -87,18 +87,60 @@ void SearchMenu::show() {
 
 }
 Menu * SearchMenu::getNextMenu() {
-    string origin, destination;
+    int originNode, destinationNode;
     bool walk;
     double distance;
 
-    cout << " Origin\n ";
-    if(!input::get(origin) || !input::validateStop(data,origin)){
+    unsigned int options = 0;
+    cout << "Search Options:\n\n";
+    cout << "[" << ++options << "] " << "Name\n";
+    cout << "[" << ++options << "] " << "Coordinates\n";
+    int option;
+    if(!input::get(option)){
         return invalidOption();
     }
 
-    cout << " Destination\n ";
-    if(!input::get(destination ) || !input::validateStop(data,destination)){
-        return invalidOption();
+    switch(option){
+        case 1:{
+            string origin, destination;
+            cout << " Origin\n ";
+            if(!input::get(origin) || !input::validateStop(data,origin)){
+                return invalidOption();
+            }
+
+            cout << " Destination\n ";
+            if(!input::get(destination ) || !input::validateStop(data,destination)){
+                return invalidOption();
+            }
+            originNode = input::stringToInt(data,origin);
+            destinationNode = input::stringToInt(data,destination);
+            break;
+        }
+
+        case 2:{
+            double originLatitude, originLongitude, destinationLatitude, destinationLongitude;
+            cout << "Origin - Longitude";
+            if(!input::get(originLongitude))
+                return invalidOption();
+            cout << "Origin - Latitude";
+            if(!input::get(originLatitude))
+                return invalidOption();
+            if(!input::validateStop(data, originLongitude, originLatitude))
+                return invalidOption();
+
+            cout << "Destination - Longitude";
+            if(!input::get(destinationLongitude))
+                return invalidOption();
+            cout << "Origin - Latitude";
+            if(!input::get(destinationLatitude))
+                return invalidOption();
+            if(!input::validateStop(data, destinationLongitude, destinationLatitude))
+                return invalidOption();
+
+            originNode = input::coordsToInt(data, originLongitude, originLatitude);
+            destinationNode = input::coordsToInt(data, destinationLongitude, destinationLatitude);
+            break;
+        }
     }
 
     cout << " Walk (Yes: 1 | No: 0) \n ";
@@ -113,16 +155,13 @@ Menu * SearchMenu::getNextMenu() {
         }
     }
 
-    unsigned int options = 0;
+    options = 0;
     system("cmd /c cls");
-    cout << origin << " -> " << destination << std::endl;
     cout << "Path Options:\n\n";
     cout << "[" << ++options << "] " << "Minimum Stops\n";
     cout << "[" << ++options << "] " << "Minimum Distance\n";
     cout << "[" << ++options << "] " << "Minimum Line Changes\n";
     cout << "[" << ++options << "] " << "Cheaper\n";
-
-    int option;
     if(!input::get(option)){
         return invalidOption();
     }
@@ -139,16 +178,16 @@ Menu * SearchMenu::getNextMenu() {
     cout << "Path: " << std::endl;
     switch(option){
         case 1:
-            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), STOPS);
+            data->showPath(originNode,destinationNode , STOPS);
             break;
         case 2:
-            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), DIST);
+            data->showPath(originNode,destinationNode, DIST);
             break;
         case 3:
-            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), LINE);
+            data->showPath(originNode,destinationNode, LINE);
             break;
         case 4:
-            data->showPath(input::stringToInt(data,origin), input::stringToInt(data,destination), ZONE);
+            data->showPath(originNode,destinationNode, ZONE);
             break;
         default: break;
     }

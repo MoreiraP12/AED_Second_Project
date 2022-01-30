@@ -41,7 +41,15 @@ namespace input {
         return data->searchStop(stop) != -1;
     }
 
+    bool validateStop(Data* data, const double& longitude, const double& latitude){
+        return data->searchStop(longitude,  latitude) != -1;
+    }
+
     int stringToInt(Data* data,const std::string& stop){
         return data->searchStop(stop);
+    }
+
+    int coordsToInt(Data* data,const double& longitude, const double& latitude){
+        return data->searchStop(longitude, latitude);
     }
 }

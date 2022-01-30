@@ -131,6 +131,13 @@ int Data::searchStop(const std::string& stop){
     else return it->second;
 }
 
+int Data::searchStop(const double& longitude, const double& latitude){
+    auto it = stopCoordinates.find(longitude-latitude);
+    if(it == stopCoordinates.end())
+        return -1;
+    else return it->second;
+}
+
 void Data::showPath(int src, int dest, typeWeight typeWeight){
     stack<ShowStop> path;
     try{

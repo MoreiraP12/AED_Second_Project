@@ -84,6 +84,13 @@ public:
     int searchStop(const std::string&);
 
     /**
+    * Searches for the existence of received stop
+    * in order to validate inputs
+    * @return the index of the id, if it exists; -1 otherwise
+    */
+    int searchStop(const double& longitude, const double& latitude);
+
+    /**
      * Shows the shortest path between two stops according to the desired
      * weight parameter
      * @param src the source node

@@ -73,12 +73,27 @@ namespace input {
     bool validateStop(Data* data,const std::string& stop);
 
     /**
+     * Checks for the existence of inputted stop id string
+     * @return true if exists in our 'database'
+     */
+    bool validateStop(Data* data,const double& longitude,const double& latitude);
+
+    /**
      * Transforms string stop inputs into their relative position in the graph
      * @param data our singleton graph
      * @param stop
      * @return the int - relative position in the graph
      */
     int stringToInt(Data* data,const std::string& stop);
+
+    /**
+     * Transforms coordinates inputs into their relative position in the graph
+     * @param data our singleton graph
+     * @param longitude longitude
+      * @param latitude latitude
+     * @return the int - relative position in the graph
+     */
+    int coordsToInt(Data* data,const double& longitude, const double& latitude);
 
 }
 
