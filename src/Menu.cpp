@@ -81,7 +81,7 @@ Menu * NearbyStopsMenu::getNextMenu() {
 
     system("cls");
     cout << "Stops:" << std::endl;
-    data->showWalkingStops(17, distance);
+    data->showWalkingStops(input::stringToInt(data,origin), distance);
     input::waitEnter();
     return nullptr ;
 }
