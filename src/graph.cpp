@@ -98,6 +98,7 @@ void Graph::bfs(int v) {
 void Graph::dijkstra(int src, typeWeight type) {
     MinHeap<int, double> q(n-1, -1);
     for (int v=1; v<=n; v++) {
+        nodes[v].parent = -1;
         nodes[v].distance = INF;
         q.insert(v, INF);
         nodes[v].visited = false;
@@ -170,24 +171,6 @@ void Graph::dijkstraLines(int src) {
         }
     }
 }
-/*
-stack<Stop> Graph::shortPath(int src, int dest, typeWeight type){
-    if(type == LINE) dijkstraLines(src);
-    else if(type == STOPS) bfs(src);
-    else dijkstra(src, type);
-
-    stack<Stop> path;
-    if(nodes[dest].distance == INF) throw NoPathAvailable();
-    path.push(nodes[dest].stop);
-    int v = dest;
-    while (v != src){
-        if(v == -1)
-            throw NoPathAvailable();
-        v = nodes[v].parent;
-        path.push(nodes[v].stop);
-    }
-    return path;
-}*/
 
 stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
     if(type == LINE) dijkstraLines(src);
