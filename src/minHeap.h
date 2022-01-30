@@ -13,7 +13,7 @@
 
 using namespace std;
 
-// Binary min-heap to represent integer keys of type K with values (priorities) of type V
+
 template <class K, class V>
 class MinHeap {
     struct Node { // An element of the heap: a pair (key, value)
@@ -40,9 +40,7 @@ public:
     K removeMin(); // remove and return key with smaller value
 };
 
-// ----------------------------------------------
 
-// Make a value go "up the tree" until it reaches its position
 template <class K, class V>
 void MinHeap<K,V>::upHeap(int i) {
     while (i>1 && a[i].value < a[PARENT(i)].value) { // while pos smaller than parent, keep swapping to upper position
@@ -51,7 +49,7 @@ void MinHeap<K,V>::upHeap(int i) {
     }
 }
 
-// Make a value go "down the tree" until it reaches its position
+
 template <class K, class V>
 void MinHeap<K,V>::downHeap(int i) {
     while (LEFT(i) <= size) { // while within heap limits
@@ -63,7 +61,6 @@ void MinHeap<K,V>::downHeap(int i) {
     }
 }
 
-// Swap two positions of the heap (update their positions)
 template <class K, class V>
 void MinHeap<K,V>::swap(int i1, int i2) {
     Node tmp = a[i1]; a[i1] = a[i2]; a[i2] = tmp;
@@ -71,26 +68,21 @@ void MinHeap<K,V>::swap(int i1, int i2) {
     pos[a[i2].key] = i2;
 }
 
-// ----------------------------------------------
 
-// Create a min-heap for a max of n pairs (K,V) with notFound returned when empty
 template <class K, class V>
 MinHeap<K,V>::MinHeap(int n, const K& notFound) : KEY_NOT_FOUND(notFound), size(0), maxSize(n), a(n+1) {
 }
 
-// Return number of elements in the heap
 template <class K, class V>
 int MinHeap<K,V>::getSize() {
     return size;
 }
 
-// Heap has key?
 template <class K, class V>
 bool MinHeap<K, V>::hasKey(const K& key) {
     return pos.find(key) != pos.end();
 }
 
-// Insert (key, value) on the heap
 template <class K, class V>
 void MinHeap<K,V>::insert(const K& key, const V& value) {
     if (size == maxSize) return; // heap is full, do nothing
@@ -100,7 +92,6 @@ void MinHeap<K,V>::insert(const K& key, const V& value) {
     upHeap(size);
 }
 
-// Decrease value of key to the indicated value
 template <class K, class V>
 void MinHeap<K,V>::decreaseKey(const K& key, const V& value) {
     if (!hasKey(key)) return; // key does not exist, do nothing
@@ -110,7 +101,6 @@ void MinHeap<K,V>::decreaseKey(const K& key, const V& value) {
     upHeap(i);
 }
 
-// remove and return key with smaller value
 template <class K, class V>
 K MinHeap<K,V>::removeMin() {
     if (size == 0) return KEY_NOT_FOUND;
