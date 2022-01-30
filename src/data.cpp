@@ -85,7 +85,7 @@ void Data::readLines(){
 }
 
 std::vector<std::string> Data::readCsv(std::string line) {
-    int i;
+    unsigned long long i;
     std::string load;
     std::vector<std::string> ret;
     while(!line.empty()){
@@ -103,15 +103,27 @@ std::vector<std::string> Data::readCsv(std::string line) {
     return ret;
 }
 
-vector<std::pair<Stop, double>> Data::getWalkingStops(int n, double maxDist){
-    vector<pair<Stop, double>> ret;
+set<std::pair<Stop, double>> Data::getWalkingStops(int n, double maxDist){
+    set<pair<Stop, double>> ret;
     Stop from = network.elementAt(n);
-    for(int i = 1; i <= n; i++){
+    for(int i = 1; i <= network.size(); i++){
         if(i == n) continue;
         Stop to = network.elementAt(i);
         double dist = from.getDistance(to);
         if( dist < maxDist)
-            ret.emplace_back(to,dist);
+            ret.insert({to,dist});
+    }
+    return ret;
+}
+
+set<std::pair<Stop, double>> Data::getWalkingStops(double longitude, double latitude, double maxDist){
+    set<pair<Stop, double>> ret;
+    Stop from = Stop("","","",longitude, latitude);
+    for(int i = 1; i <= network.size(); i++){
+        Stop to = network.elementAt(i);
+        double dist = from.getDistance(to);
+        if( dist < maxDist)
+            ret.insert({to,dist});
     }
     return ret;
 }
@@ -159,8 +171,22 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
     }
 }
 
+bool operator<(const pair<Stop, double>& p1, const pair<Stop, double>& p2){
+    return p1.second < p2.second;
+}
+
 void Data::showWalkingStops(int i, double distance) {
-    vector<pair<Stop, double>> stops = getWalkingStops(i,distance);
+    set<pair<Stop, double>> stops = getWalkingStops(i,distance);
+    auto it = stops.begin();
+    cout << std::setw(35) << "Name" << std::setw(17) << "Code" << std::setw(17) << "Zone" << std::setw(20) << "Distance(meters)" << std::endl;
+    while (it != stops.end()){
+        cout << std::setw(35) << it->first.getName() << std::setw(17) << it->first.getCode() << std::setw(17) << it->first.getZone() << std::setw(20) << round(it->second*1000) << std::endl;
+        it++;
+    }
+}
+
+void Data::showWalkingStops(double longitude, double latitude, double distance) {
+    set<pair<Stop, double>> stops = getWalkingStops( longitude,  latitude,distance);
     auto it = stops.begin();
     cout << std::setw(35) << "Name" << std::setw(17) << "Code" << std::setw(17) << "Zone" << std::setw(20) << "Distance(meters)" << std::endl;
     while (it != stops.end()){

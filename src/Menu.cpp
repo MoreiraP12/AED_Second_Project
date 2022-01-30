@@ -54,26 +54,55 @@ Menu * AllStopsMenu::getNextMenu() {
 // ---------------  Nearby Stops Menu ---------------
 void NearbyStopsMenu::show() {
     system("cls");
-    cout << "Please tell us in which station you're and how much you're willing to walk" << endl;
+    cout << "Please tell us in which station or coordinates you're and how much you're willing to walk" << endl;
 
 }
 Menu * NearbyStopsMenu::getNextMenu() {
-    string origin;
     double distance;
-
-    cout << " Origin\n ";
-    if(!input::get(origin)){
-        return invalidOption();
-    }
-
-    cout << " Distance\n ";
+    cout << " Distance (km)\n\n ";
     if(!input::get(distance)){
         return invalidOption();
     }
 
-    system("cls");
-    cout << "Stops:" << std::endl;
-    data->showWalkingStops(input::stringToInt(data,origin), distance);
+    unsigned int options = 0;
+    cout << "Search Options:\n\n";
+    cout << "[" << ++options << "] " << "Name Stop\n";
+    cout << "[" << ++options << "] " << "Coordinates\n";
+    int option;
+    if(!input::get(option)){
+        return invalidOption();
+    }
+
+    switch (option) {
+        case 1:
+        {
+            string origin;
+            cout << " Origin\n ";
+            if(!input::get(origin)){
+                return invalidOption();
+            }
+            system("cls");
+            cout << "Stops:" << std::endl;
+            data->showWalkingStops(input::stringToInt(data,origin), distance);
+        }
+        case 2:
+        {
+            double originLatitude, originLongitude;
+            cout << "Origin - Longitude";
+            if(!input::get(originLongitude))
+                return invalidOption();
+            cout << "Origin - Latitude";
+            if(!input::get(originLatitude))
+                return invalidOption();
+            system("cls");
+            cout << "Stops:" << std::endl;
+            data->showWalkingStops(originLongitude,originLatitude, distance);
+        }
+        default:{
+            break;
+        }
+    }
+
     input::waitEnter();
     return nullptr ;
 }
@@ -142,7 +171,7 @@ Menu * SearchMenu::getNextMenu() {
             break;
         }
         default:{
-            return invalidOption();
+            break;
         }
     }
 
@@ -152,7 +181,7 @@ Menu * SearchMenu::getNextMenu() {
     }
 
     if(walk){
-        cout << " Distance \n ";
+        cout << " Distance(km) \n ";
         if(!input::get(distance)){
             return invalidOption();
         }
@@ -172,7 +201,7 @@ Menu * SearchMenu::getNextMenu() {
     system("cmd /c cls");
     cout << "|Options|" << std::endl;
     if(walk){
-        cout << "Walk: Yes" << "| Distance: " << distance << std::endl;
+        cout << "Walk: Yes" << "| Distance(km) : " << distance << std::endl;
     }else{
         cout << "Walk: No" << std::endl;
     }

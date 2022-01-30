@@ -91,13 +91,14 @@ public:
     int searchStop(const double& longitude, const double& latitude);
 
     /**
-     * Shows the shortest path between two stops according to the desired
-     * weight parameter
-     * @param src the source node
-     * @param dest the destination node
-     * @param typeWeight the weight parameter
+     * //TODO
      */
     void showWalkingStops(int i, double distance);
+
+    /**
+    * //TODO
+    */
+    void showWalkingStops(double longitude, double latitude, double distance);
 
     /**
      * Indejcts edges between stops that are below a certain walking distance,
@@ -115,7 +116,9 @@ public:
     }
 
 
-    vector<std::pair<Stop, double>> getWalkingStops( int n, double maxDist);
+    set<std::pair<Stop, double>> getWalkingStops( int n, double maxDist);
+
+    set<std::pair<Stop, double>> getWalkingStops( double longitude, double latitude, double maxDist);
 
     /**
      * Prints the path between two stops, depending on user input. Allows for
