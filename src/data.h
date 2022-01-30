@@ -66,7 +66,7 @@ public:
             this->loadLines();
         }
         catch(ErrorOpeningInfile& e){
-            ErrorOpeningInfile::print();
+            e.print();
         }
     }
 

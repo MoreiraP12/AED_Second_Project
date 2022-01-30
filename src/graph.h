@@ -105,8 +105,12 @@ public:
     set<string> getLines(int src, int dest);
 
     /**
-     *
-     * @param v
+     *Runs BFS's algorithm to compute the minimum amount of nodes
+     * visited to get to a certain node
+     * specified through a parameter
+     * Complexity O(|E|+|V|)
+     * @param src the source node
+     * @param dest destination node
      */
     void bfs(int v);
 
@@ -114,6 +118,7 @@ public:
      * Runs Dijkstra's algorithm to compute the distance between src and
      * each node of the graph. The distance's value depends on the type
      * specified through the parameter
+     * Complexity O(|E|+|V|log|V|)
      * @param src the source node
      * @param type the distance's specification parameter
      */

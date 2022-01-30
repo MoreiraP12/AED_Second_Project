@@ -38,9 +38,8 @@ public:
     /**
      * Informs the user there was an error opening input file "fileName"
      */
-    void static print(std::string fileName) {
-        std::cout << "Error opening input file " << fileName <<\n
-        ";
+    void print() {
+        std::cout << "Error opening input file " << fileName <<"\n";
     }
 };
 
