@@ -23,7 +23,6 @@ void Graph::addEdge(int src, int dest, const std::string& line, Weight weight, b
     if (src<1 || src>n || dest<1 || dest>n) return;
     for(auto edge : nodes[src].adj) {
         if (edge.dest == dest) {
-            //Eventually fix this
             edge.lines.insert(line);
             return;
         }
@@ -178,7 +177,7 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
         }catch(NoPathAvailable& e){
             NoPathAvailable::printError();
         }
-        v = nodes[v].parent;//TODO
+        v = nodes[v].parent;
         path.push({nodes[v].stop, lines});
     }
     return path;
@@ -186,8 +185,9 @@ stack<ShowStop> Graph::shortPath(int src, int dest, typeWeight type){
 
 set<string> Graph::getLines(int src, int dest){
     for(const auto& edge: nodes[src].adj) {
-        if (edge.dest == dest)
+        if (edge.dest == dest){
             return edge.lines;
+        }
     }
     throw NoPathAvailable();
 }

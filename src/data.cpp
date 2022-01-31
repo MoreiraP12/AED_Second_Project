@@ -164,8 +164,10 @@ void Data::showPath(int src, int dest, typeWeight typeWeight){
         auto it = path.top().lines.begin();
         cout << *it;
         it++;
-        while(it != path.top().lines.end())
+        while(it != path.top().lines.end()){
             cout << "/" << *it ;
+            it++;
+        }
         cout << endl;
         path.pop();
     }
