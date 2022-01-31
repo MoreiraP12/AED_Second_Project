@@ -1,0 +1,32 @@
+\hypertarget{exceptions_8h_source}{}\doxysection{exceptions.\+h}
+\label{exceptions_8h_source}\index{src/exceptions.h@{src/exceptions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AED\_PROJ\_2\_EXCEPTIONS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AED\_PROJ\_2\_EXCEPTIONS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}stop.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_no_path_available}{NoPathAvailable}}: \textcolor{keyword}{public} std::exception\{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_no_path_available_a953ec70eaae9adb62f7f69334d82bbc5}{NoPathAvailable}}()= \textcolor{keywordflow}{default};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \textcolor{keyword}{static} \mbox{\hyperlink{class_no_path_available_a2757b570c4b229a2f1fe03ad77b9369f}{printError}}()\{}
+\DoxyCodeLine{20         std::cout << \textcolor{stringliteral}{"{}There are no available stops to reach your destination"{}} << std::endl;}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{class_error_opening_infile}{ErrorOpeningInfile}} : \textcolor{keyword}{public} std::exception\{}
+\DoxyCodeLine{29     std::string fileName;}
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_error_opening_infile_a132fa2e92f12e4766c77820d545000cc}{ErrorOpeningInfile}}(std::string\& name) : fileName(std::move(name))\{\};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_error_opening_infile_a69d6be501afa863882b1b34e03035bbd}{print}}() \{}
+\DoxyCodeLine{42         std::cout << \textcolor{stringliteral}{"{}Error opening input file "{}} << fileName <<\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

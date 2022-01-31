@@ -1,0 +1,51 @@
+\hypertarget{stop_8h_source}{}\doxysection{stop.\+h}
+\label{stop_8h_source}\index{src/stop.h@{src/stop.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef AED\_PROJ\_2\_STOPS\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define AED\_PROJ\_2\_STOPS\_H}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_stop}{Stop}} \{}
+\DoxyCodeLine{15     std::string code;}
+\DoxyCodeLine{16     std::string name;}
+\DoxyCodeLine{17     std::string zone;}
+\DoxyCodeLine{18     std::pair<double, double> coordinates;}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23      \textcolor{keyword}{explicit} \mbox{\hyperlink{class_stop_a073ce51e9457daf54fc6999ba51dacba}{Stop}}(std::string c = \textcolor{stringliteral}{"{}"{}}, std::string n = \textcolor{stringliteral}{"{}"{}}, std::string z = \textcolor{stringliteral}{"{}"{}}, \textcolor{keywordtype}{double} lat = 0, \textcolor{keywordtype}{double} lon = 0):}
+\DoxyCodeLine{24         code(std::move(c)), name(std::move(n)), zone(std::move(z)), coordinates(lat, lon)\{\};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{32      std::string \mbox{\hyperlink{class_stop_a1f8268382395c176e542dd54f11103d8}{getCode}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{33          \textcolor{keywordflow}{return} code;}
+\DoxyCodeLine{34      \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{41      std::string \mbox{\hyperlink{class_stop_aa16b5cedf663d2ad0f20108e33ddf187}{getName}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{42          \textcolor{keywordflow}{return} name;}
+\DoxyCodeLine{43      \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{50      std::string \mbox{\hyperlink{class_stop_ad943f26dca5c9091a0cdadcb9bc90b1b}{getZone}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{51          \textcolor{keywordflow}{return} zone;}
+\DoxyCodeLine{52      \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{58      \textcolor{keywordtype}{double} \mbox{\hyperlink{class_stop_a9d10ee2761549c5d28f450d6841c8d09}{getLatitude}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{59          \textcolor{keywordflow}{return} coordinates.first;}
+\DoxyCodeLine{60      \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{66      \textcolor{keywordtype}{double} \mbox{\hyperlink{class_stop_adb957857f82251f8ae3faa69da9f5a8d}{getLongitude}}()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{67          \textcolor{keywordflow}{return} coordinates.second;}
+\DoxyCodeLine{68      \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{75      \textcolor{keywordtype}{double} \mbox{\hyperlink{class_stop_aab93feb298af1ec949e8b0ae96336795}{getDistance}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop}{Stop}}\& stop) \textcolor{keyword}{const};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

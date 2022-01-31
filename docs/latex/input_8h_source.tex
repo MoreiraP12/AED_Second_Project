@@ -1,0 +1,55 @@
+\hypertarget{input_8h_source}{}\doxysection{input.\+h}
+\label{input_8h_source}\index{src/input.h@{src/input.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AED\_PROJ1\_INPUT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AED\_PROJ1\_INPUT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}data.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }input \{}
+\DoxyCodeLine{18     \textcolor{keywordtype}{string} getRaw();}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{28     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{29     \textcolor{keywordtype}{bool} strToVar(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&str, T \&var) \{}
+\DoxyCodeLine{30         istringstream ss\{str\};}
+\DoxyCodeLine{31         ss >> var;}
+\DoxyCodeLine{32         \textcolor{keywordflow}{if} (ss.fail() || !ss.eof()) \{}
+\DoxyCodeLine{33             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{44     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{45     \textcolor{keywordtype}{bool} get(T \&var) \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{string} str = getRaw();}
+\DoxyCodeLine{47         \textcolor{keywordflow}{if} (str.empty()) \{}
+\DoxyCodeLine{48             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} strToVar(str, var);}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} waitEnter();}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{void} trimString(\textcolor{keywordtype}{string} \&str);}
+\DoxyCodeLine{69     \textcolor{keywordtype}{bool} validateStop(\mbox{\hyperlink{class_data}{Data}}* data,\textcolor{keyword}{const} std::string\& stop);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{bool} validateStop(\mbox{\hyperlink{class_data}{Data}}* data,\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& longitude,\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& latitude);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{int} stringToInt(\mbox{\hyperlink{class_data}{Data}}* data,\textcolor{keyword}{const} std::string\& stop);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{92     \textcolor{keywordtype}{int} coordsToInt(\mbox{\hyperlink{class_data}{Data}}* data,\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& longitude, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& latitude);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJ1\_INPUT\_H}}
+
+\end{DoxyCode}

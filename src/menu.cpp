@@ -83,6 +83,7 @@ Menu * NearbyStopsMenu::getNextMenu() {
             system("cls");
             cout << "Stops:" << std::endl;
             data->showWalkingStops(input::stringToInt(data,origin), distance);
+            break;
         }
         case 2:
         {
@@ -96,6 +97,7 @@ Menu * NearbyStopsMenu::getNextMenu() {
             system("cls");
             cout << "Stops:" << std::endl;
             data->showWalkingStops(originLongitude,originLatitude, distance);
+            break;
         }
         default:{
             break;

@@ -1,0 +1,105 @@
+\hypertarget{class_stop}{}\doxysection{Stop Class Reference}
+\label{class_stop}\index{Stop@{Stop}}
+
+
+{\ttfamily \#include $<$stop.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stop_a073ce51e9457daf54fc6999ba51dacba}{Stop}} (std\+::string c=\char`\"{}\char`\"{}, std\+::string n=\char`\"{}\char`\"{}, std\+::string z=\char`\"{}\char`\"{}, double lat=0, double lon=0)
+\item 
+std\+::string \mbox{\hyperlink{class_stop_a1f8268382395c176e542dd54f11103d8}{get\+Code}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_stop_aa16b5cedf663d2ad0f20108e33ddf187}{get\+Name}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_stop_ad943f26dca5c9091a0cdadcb9bc90b1b}{get\+Zone}} () const
+\item 
+double \mbox{\hyperlink{class_stop_a9d10ee2761549c5d28f450d6841c8d09}{get\+Latitude}} () const
+\item 
+double \mbox{\hyperlink{class_stop_adb957857f82251f8ae3faa69da9f5a8d}{get\+Longitude}} () const
+\item 
+double \mbox{\hyperlink{class_stop_aab93feb298af1ec949e8b0ae96336795}{get\+Distance}} (const \mbox{\hyperlink{class_stop}{Stop}} \&stop) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pretty much a modified version of the BFS algorithm
+
+Big O of O(V + E) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_stop_a073ce51e9457daf54fc6999ba51dacba}\label{class_stop_a073ce51e9457daf54fc6999ba51dacba}} 
+\index{Stop@{Stop}!Stop@{Stop}}
+\index{Stop@{Stop}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily Stop\+::\+Stop (\begin{DoxyParamCaption}\item[{std\+::string}]{c = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{n = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{z = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{lat = {\ttfamily 0},  }\item[{double}]{lon = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor for \mbox{\hyperlink{class_stop}{Stop}} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_stop_a1f8268382395c176e542dd54f11103d8}\label{class_stop_a1f8268382395c176e542dd54f11103d8}} 
+\index{Stop@{Stop}!getCode@{getCode}}
+\index{getCode@{getCode}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily std\+::string Stop\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getters Getter for the code attribute \begin{DoxyReturn}{Returns}
+the stop\textquotesingle{}s code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stop_aab93feb298af1ec949e8b0ae96336795}\label{class_stop_aab93feb298af1ec949e8b0ae96336795}} 
+\index{Stop@{Stop}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Stop\+::get\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_stop}{Stop}} \&}]{stop }\end{DoxyParamCaption}) const}
+
+Returns the distance between this destination \mbox{\hyperlink{class_stop}{Stop}} 
+\begin{DoxyParams}{Parameters}
+{\em stop} & the destination stop \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the distance between both stops 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stop_a9d10ee2761549c5d28f450d6841c8d09}\label{class_stop_a9d10ee2761549c5d28f450d6841c8d09}} 
+\index{Stop@{Stop}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Stop\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for the latitude attribute \begin{DoxyReturn}{Returns}
+the stop\textquotesingle{}s latitude 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stop_adb957857f82251f8ae3faa69da9f5a8d}\label{class_stop_adb957857f82251f8ae3faa69da9f5a8d}} 
+\index{Stop@{Stop}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Stop\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for the longitude attribute \begin{DoxyReturn}{Returns}
+the stop\textquotesingle{}s longitude 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stop_aa16b5cedf663d2ad0f20108e33ddf187}\label{class_stop_aa16b5cedf663d2ad0f20108e33ddf187}} 
+\index{Stop@{Stop}!getName@{getName}}
+\index{getName@{getName}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Stop\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for the name attribute \begin{DoxyReturn}{Returns}
+the stop\textquotesingle{}s name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stop_ad943f26dca5c9091a0cdadcb9bc90b1b}\label{class_stop_ad943f26dca5c9091a0cdadcb9bc90b1b}} 
+\index{Stop@{Stop}!getZone@{getZone}}
+\index{getZone@{getZone}!Stop@{Stop}}
+\doxysubsubsection{\texorpdfstring{getZone()}{getZone()}}
+{\footnotesize\ttfamily std\+::string Stop\+::get\+Zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for the zone attribute \begin{DoxyReturn}{Returns}
+the stops zone 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/stop.\+h\item 
+src/stop.\+cpp\end{DoxyCompactItemize}

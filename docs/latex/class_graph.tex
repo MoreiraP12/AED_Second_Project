@@ -1,0 +1,188 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_a8b90590b3812e63ae5cbe0e48764e589}{add\+Node}} (const \mbox{\hyperlink{class_stop}{Stop}} \&s)
+\item 
+void \mbox{\hyperlink{class_graph_aaef3a134cc8b4b76734199639020b6d0}{add\+Edge}} (int src, int dest, const std\+::string \&line, \mbox{\hyperlink{struct_weight}{Weight}} weight, bool on\+Foot=false)
+\item 
+void \mbox{\hyperlink{class_graph_aea8a53ba3274da795bf3992bfd9c609f}{create\+Walking\+Edges}} (double max\+Dist)
+\item 
+void \mbox{\hyperlink{class_graph_a09c06812b3e120f2446554c4382f0e93}{destroy\+Walking\+Edges}} ()
+\item 
+\mbox{\hyperlink{class_stop}{Stop}} \mbox{\hyperlink{class_graph_acb464d3dde3d114a30bfb35d848e7b53}{element\+At}} (int i)
+\item 
+int \mbox{\hyperlink{class_graph_a127e1444982df193241bd2be9f088747}{size}} ()
+\item 
+set$<$ string $>$ \mbox{\hyperlink{class_graph_a91945737ed9e9f2a8f69267e3553347f}{get\+Lines}} (int src, int dest)
+\item 
+void \mbox{\hyperlink{class_graph_ae1e45e27c60711dadec619ca17e830a4}{bfs}} (int v)
+\item 
+void \mbox{\hyperlink{class_graph_af16c147351cedd430f6c148096ce2530}{dijkstra}} (int src, type\+Weight type)
+\item 
+void \mbox{\hyperlink{class_graph_ac2350937b7a69543f1fa07ea8c15c81c}{dijkstra\+Lines}} (int src)
+\item 
+stack$<$ \mbox{\hyperlink{struct_show_stop}{Show\+Stop}} $>$ \mbox{\hyperlink{class_graph_a8da5a4f5b3a8898f4aabf7655e522421}{short\+Path}} (int src, int dest, type\+Weight type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}\label{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor for the \mbox{\hyperlink{class_graph}{Graph}}. Initializes the vector of nodes with a singleton once marking the position 0 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_aaef3a134cc8b4b76734199639020b6d0}\label{class_graph_aaef3a134cc8b4b76734199639020b6d0}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{const std\+::string \&}]{line,  }\item[{\mbox{\hyperlink{struct_weight}{Weight}}}]{weight,  }\item[{bool}]{on\+Foot = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Creates and add an edge between nodes src and dest. Receives the line which the edge represents. If there\textquotesingle{}s already an edge between those two stops, adds the new line to the list of lines. Receives the weight of the edge as parameter, and a boolean with marks edges that don\textquotesingle{}t represent bus lines, but walking distances 
+\begin{DoxyParams}{Parameters}
+{\em src} & source node \\
+\hline
+{\em dest} & destination node \\
+\hline
+{\em line} & the line that connects the nodes \\
+\hline
+{\em weight} & the weight of the edge \\
+\hline
+{\em on\+Foot} & true if the edge is an walking edge \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a8b90590b3812e63ae5cbe0e48764e589}\label{class_graph_a8b90590b3812e63ae5cbe0e48764e589}} 
+\index{Graph@{Graph}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}}
+{\footnotesize\ttfamily void Graph\+::add\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_stop}{Stop}} \&}]{s }\end{DoxyParamCaption})}
+
+Creates and adds a \mbox{\hyperlink{struct_node}{Node}} to the graph. The \mbox{\hyperlink{struct_node}{Node}} encapsulates \mbox{\hyperlink{class_stop}{Stop}} s 
+\begin{DoxyParams}{Parameters}
+{\em s} & the \mbox{\hyperlink{class_stop}{Stop}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ae1e45e27c60711dadec619ca17e830a4}\label{class_graph_ae1e45e27c60711dadec619ca17e830a4}} 
+\index{Graph@{Graph}!bfs@{bfs}}
+\index{bfs@{bfs}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}}
+{\footnotesize\ttfamily void Graph\+::bfs (\begin{DoxyParamCaption}\item[{int}]{v }\end{DoxyParamCaption})}
+
+Runs BFS\textquotesingle{}s algorithm to compute the minimum amount of nodes visited to get to a certain node specified through a parameter Complexity O($\vert$\+E$\vert$+$\vert$\+V$\vert$) 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source node \\
+\hline
+{\em dest} & destination node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aea8a53ba3274da795bf3992bfd9c609f}\label{class_graph_aea8a53ba3274da795bf3992bfd9c609f}} 
+\index{Graph@{Graph}!createWalkingEdges@{createWalkingEdges}}
+\index{createWalkingEdges@{createWalkingEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{createWalkingEdges()}{createWalkingEdges()}}
+{\footnotesize\ttfamily void Graph\+::create\+Walking\+Edges (\begin{DoxyParamCaption}\item[{double}]{max\+Dist }\end{DoxyParamCaption})}
+
+Creates edges that represent walking distances between stops. These distances must be below the value specified in the parameter 
+\begin{DoxyParams}{Parameters}
+{\em max\+Dist} & the maximum walking distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a09c06812b3e120f2446554c4382f0e93}\label{class_graph_a09c06812b3e120f2446554c4382f0e93}} 
+\index{Graph@{Graph}!destroyWalkingEdges@{destroyWalkingEdges}}
+\index{destroyWalkingEdges@{destroyWalkingEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{destroyWalkingEdges()}{destroyWalkingEdges()}}
+{\footnotesize\ttfamily void Graph\+::destroy\+Walking\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears walking edges from the graph \mbox{\Hypertarget{class_graph_af16c147351cedd430f6c148096ce2530}\label{class_graph_af16c147351cedd430f6c148096ce2530}} 
+\index{Graph@{Graph}!dijkstra@{dijkstra}}
+\index{dijkstra@{dijkstra}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
+{\footnotesize\ttfamily void Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{type\+Weight}]{type }\end{DoxyParamCaption})}
+
+Runs Dijkstra\textquotesingle{}s algorithm to compute the distance between src and each node of the graph. The distance\textquotesingle{}s value depends on the type specified through the parameter Complexity O($\vert$\+E$\vert$+$\vert$\+V$\vert$log$\vert$\+V$\vert$) 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source node \\
+\hline
+{\em type} & the distance\textquotesingle{}s specification parameter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ac2350937b7a69543f1fa07ea8c15c81c}\label{class_graph_ac2350937b7a69543f1fa07ea8c15c81c}} 
+\index{Graph@{Graph}!dijkstraLines@{dijkstraLines}}
+\index{dijkstraLines@{dijkstraLines}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dijkstraLines()}{dijkstraLines()}}
+{\footnotesize\ttfamily void Graph\+::dijkstra\+Lines (\begin{DoxyParamCaption}\item[{int}]{src }\end{DoxyParamCaption})}
+
+Runs Dijktra\textquotesingle{}s algorithm to compute the distance between src and each node of the graph, considering \textquotesingle{}line changes\textquotesingle{} as the parameter that defines the distance between two nodes 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_acb464d3dde3d114a30bfb35d848e7b53}\label{class_graph_acb464d3dde3d114a30bfb35d848e7b53}} 
+\index{Graph@{Graph}!elementAt@{elementAt}}
+\index{elementAt@{elementAt}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{elementAt()}{elementAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_stop}{Stop}} Graph\+::element\+At (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves the \mbox{\hyperlink{class_stop}{Stop}} object stored in the graph\textquotesingle{}s node that\textquotesingle{}s in the position i of the nodes vector 
+\begin{DoxyParams}{Parameters}
+{\em i} & the index of the \mbox{\hyperlink{struct_node}{Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_stop}{Stop}} stored in said \mbox{\hyperlink{struct_node}{Node}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a91945737ed9e9f2a8f69267e3553347f}\label{class_graph_a91945737ed9e9f2a8f69267e3553347f}} 
+\index{Graph@{Graph}!getLines@{getLines}}
+\index{getLines@{getLines}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getLines()}{getLines()}}
+{\footnotesize\ttfamily set$<$ string $>$ Graph\+::get\+Lines (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest }\end{DoxyParamCaption})}
+
+Retrieves the lines between two Nodes 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source \mbox{\hyperlink{struct_node}{Node}} \\
+\hline
+{\em dest} & the destination \mbox{\hyperlink{struct_node}{Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the lines of the edge that connects them 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a8da5a4f5b3a8898f4aabf7655e522421}\label{class_graph_a8da5a4f5b3a8898f4aabf7655e522421}} 
+\index{Graph@{Graph}!shortPath@{shortPath}}
+\index{shortPath@{shortPath}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{shortPath()}{shortPath()}}
+{\footnotesize\ttfamily stack$<$ \mbox{\hyperlink{struct_show_stop}{Show\+Stop}} $>$ Graph\+::short\+Path (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{type\+Weight}]{type }\end{DoxyParamCaption})}
+
+Retrieves the shortest path between two nodes according to parameter specification 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source node \\
+\hline
+{\em dest} & the destination node \\
+\hline
+{\em type} & the specification \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the shortest path between src and dest 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a127e1444982df193241bd2be9f088747}\label{class_graph_a127e1444982df193241bd2be9f088747}} 
+\index{Graph@{Graph}!size@{size}}
+\index{size@{size}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int Graph\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the size of the graph \begin{DoxyReturn}{Returns}
+the size of the graph 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/graph.\+h\item 
+src/graph.\+cpp\end{DoxyCompactItemize}

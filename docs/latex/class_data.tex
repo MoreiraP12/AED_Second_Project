@@ -1,0 +1,131 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\item 
+void \mbox{\hyperlink{class_data_a4712c7a1ff44e81d66d2f6c60e99a8d0}{print\+All\+Stops}} ()
+\item 
+int \mbox{\hyperlink{class_data_ae9952d1dc7ad3852601eb8200160961c}{search\+Stop}} (const std\+::string \&)
+\item 
+int \mbox{\hyperlink{class_data_a9a9574f79d00558dca7e7d5b70bccab6}{search\+Stop}} (const double \&longitude, const double \&latitude)
+\item 
+void \mbox{\hyperlink{class_data_ad18e63140abc78511bfe725f02f62064}{show\+Walking\+Stops}} (int i, double distance)
+\item 
+void \mbox{\hyperlink{class_data_afbf0822ef0a28c4a8df3a6656c77e857}{show\+Walking\+Stops}} (double longitude, double latitude, double distance)
+\item 
+void \mbox{\hyperlink{class_data_ac42a50b9c0988c5f44cf2ac030ffbe4c}{inject\+Walking\+Edges}} (double max\+Dist)
+\item 
+void \mbox{\hyperlink{class_data_a7d04d54e544ef09711a69c2657c1bba2}{delete\+Walking\+Edges}} ()
+\item 
+\mbox{\Hypertarget{class_data_a4322f79df9ac4ab4fb47a9145dc41073}\label{class_data_a4322f79df9ac4ab4fb47a9145dc41073}} 
+set$<$ std\+::pair$<$ \mbox{\hyperlink{class_stop}{Stop}}, double $>$ $>$ {\bfseries get\+Walking\+Stops} (int n, double max\+Dist)
+\item 
+\mbox{\Hypertarget{class_data_a9b7ada13415a5a06182ca58855d042f0}\label{class_data_a9b7ada13415a5a06182ca58855d042f0}} 
+set$<$ std\+::pair$<$ \mbox{\hyperlink{class_stop}{Stop}}, double $>$ $>$ {\bfseries get\+Walking\+Stops} (double longitude, double latitude, double max\+Dist)
+\item 
+void \mbox{\hyperlink{class_data_a92e0452e62797459b154ebd50246be7d}{show\+Path}} (int src, int dest, type\+Weight type\+Weight)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for \mbox{\hyperlink{class_data}{Data}} class. Reads the dataset files and loads them into the system using the private methods. Handles exceptions in case a file doesn\textquotesingle{}t open; 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_a7d04d54e544ef09711a69c2657c1bba2}\label{class_data_a7d04d54e544ef09711a69c2657c1bba2}} 
+\index{Data@{Data}!deleteWalkingEdges@{deleteWalkingEdges}}
+\index{deleteWalkingEdges@{deleteWalkingEdges}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{deleteWalkingEdges()}{deleteWalkingEdges()}}
+{\footnotesize\ttfamily void Data\+::delete\+Walking\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Removes from the graph "{}walking\textquotesingle{} \mbox{\Hypertarget{class_data_ac42a50b9c0988c5f44cf2ac030ffbe4c}\label{class_data_ac42a50b9c0988c5f44cf2ac030ffbe4c}} 
+\index{Data@{Data}!injectWalkingEdges@{injectWalkingEdges}}
+\index{injectWalkingEdges@{injectWalkingEdges}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{injectWalkingEdges()}{injectWalkingEdges()}}
+{\footnotesize\ttfamily void Data\+::inject\+Walking\+Edges (\begin{DoxyParamCaption}\item[{double}]{max\+Dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Indejcts edges between stops that are below a certain walking distance, 
+\begin{DoxyParams}{Parameters}
+{\em max\+Dist} & the maximum distance between two stops \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a4712c7a1ff44e81d66d2f6c60e99a8d0}\label{class_data_a4712c7a1ff44e81d66d2f6c60e99a8d0}} 
+\index{Data@{Data}!printAllStops@{printAllStops}}
+\index{printAllStops@{printAllStops}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{printAllStops()}{printAllStops()}}
+{\footnotesize\ttfamily void Data\+::print\+All\+Stops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints all the stops stored in hashtable for user convenience \mbox{\Hypertarget{class_data_a9a9574f79d00558dca7e7d5b70bccab6}\label{class_data_a9a9574f79d00558dca7e7d5b70bccab6}} 
+\index{Data@{Data}!searchStop@{searchStop}}
+\index{searchStop@{searchStop}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{searchStop()}{searchStop()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Data\+::search\+Stop (\begin{DoxyParamCaption}\item[{const double \&}]{longitude,  }\item[{const double \&}]{latitude }\end{DoxyParamCaption})}
+
+Searches for the existence of received stop in order to validate inputs \begin{DoxyReturn}{Returns}
+the index of the id, if it exists; -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_ae9952d1dc7ad3852601eb8200160961c}\label{class_data_ae9952d1dc7ad3852601eb8200160961c}} 
+\index{Data@{Data}!searchStop@{searchStop}}
+\index{searchStop@{searchStop}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{searchStop()}{searchStop()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Data\+::search\+Stop (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{stop }\end{DoxyParamCaption})}
+
+Searches for the existence of received stop in order to validate inputs \begin{DoxyReturn}{Returns}
+the index of the id, if it exists; -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a92e0452e62797459b154ebd50246be7d}\label{class_data_a92e0452e62797459b154ebd50246be7d}} 
+\index{Data@{Data}!showPath@{showPath}}
+\index{showPath@{showPath}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{showPath()}{showPath()}}
+{\footnotesize\ttfamily void Data\+::show\+Path (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{type\+Weight}]{type\+Weight }\end{DoxyParamCaption})}
+
+Prints the path between two stops, depending on user input. Allows for different search paramters 
+\begin{DoxyParams}{Parameters}
+{\em src} & the source \mbox{\hyperlink{class_stop}{Stop}} \\
+\hline
+{\em dest} & the destination \mbox{\hyperlink{class_stop}{Stop}} \\
+\hline
+{\em type\+Weight} & the search parameter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_afbf0822ef0a28c4a8df3a6656c77e857}\label{class_data_afbf0822ef0a28c4a8df3a6656c77e857}} 
+\index{Data@{Data}!showWalkingStops@{showWalkingStops}}
+\index{showWalkingStops@{showWalkingStops}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{showWalkingStops()}{showWalkingStops()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Data\+::show\+Walking\+Stops (\begin{DoxyParamCaption}\item[{double}]{longitude,  }\item[{double}]{latitude,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+Shows stops in walking distance 
+\begin{DoxyParams}{Parameters}
+{\em longitude} & longitude \\
+\hline
+{\em latitude} & latitude \\
+\hline
+{\em distance} & distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_ad18e63140abc78511bfe725f02f62064}\label{class_data_ad18e63140abc78511bfe725f02f62064}} 
+\index{Data@{Data}!showWalkingStops@{showWalkingStops}}
+\index{showWalkingStops@{showWalkingStops}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{showWalkingStops()}{showWalkingStops()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Data\+::show\+Walking\+Stops (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+Shows stops in walking distance 
+\begin{DoxyParams}{Parameters}
+{\em i} & index of the stop \\
+\hline
+{\em distance} & distance \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/data.\+h\item 
+src/data.\+cpp\end{DoxyCompactItemize}

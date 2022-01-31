@@ -1,0 +1,58 @@
+\hypertarget{class_main_menu}{}\doxysection{Main\+Menu Class Reference}
+\label{class_main_menu}\index{MainMenu@{MainMenu}}
+
+
+{\ttfamily \#include $<$menu.\+h$>$}
+
+Inheritance diagram for Main\+Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_menu}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_menu_afc3799ec8120b75b0c3decc7e4a2eb08}\label{class_main_menu_afc3799ec8120b75b0c3decc7e4a2eb08}} 
+{\bfseries Main\+Menu} (\mbox{\hyperlink{class_data}{Data}} $\ast$d)
+\item 
+void \mbox{\hyperlink{class_main_menu_a7a17724b8ef7f8b033d029db81a84431}{show}} () override
+\item 
+\mbox{\hyperlink{class_menu}{Menu}} $\ast$ \mbox{\hyperlink{class_main_menu_afa17857bf98a0cbb5ef56b794d215f68}{get\+Next\+Menu}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Displays all possible listings 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_menu_afa17857bf98a0cbb5ef56b794d215f68}\label{class_main_menu_afa17857bf98a0cbb5ef56b794d215f68}} 
+\index{MainMenu@{MainMenu}!getNextMenu@{getNextMenu}}
+\index{getNextMenu@{getNextMenu}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{getNextMenu()}{getNextMenu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_menu}{Menu}} $\ast$ Main\+Menu\+::get\+Next\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Return a pointer to the next menu (\textquotesingle{}nullptr\textquotesingle{} and \textquotesingle{}this\textquotesingle{} can also be returned) nullptr -\/\texorpdfstring{$>$}{>} Return to previous menu this -\/\texorpdfstring{$>$}{>} Don\textquotesingle{}t change the menu \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_menu}{Menu}} $\ast$ to next menu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_menu_a8ddb344ce399d7c6b4e70dc2d3244bba}{Menu}}.
+
+\mbox{\Hypertarget{class_main_menu_a7a17724b8ef7f8b033d029db81a84431}\label{class_main_menu_a7a17724b8ef7f8b033d029db81a84431}} 
+\index{MainMenu@{MainMenu}!show@{show}}
+\index{show@{show}!MainMenu@{MainMenu}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void Main\+Menu\+::show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Show information associated with the menu 
+
+Implements \mbox{\hyperlink{class_menu_a6a39f0279393d72625776c4b717cad8a}{Menu}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/menu.\+h\item 
+src/menu.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,58 @@
+\hypertarget{menu_8h_source}{}\doxysection{menu.\+h}
+\label{menu_8h_source}\index{src/menu.h@{src/menu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}data.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}input.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_menu}{Menu}}\{}
+\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_data}{Data}}* data;}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_menu}{Menu}} * invalidOption();}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_menu}{Menu}}(\mbox{\hyperlink{class_data}{Data}}* d) : data(d)\{\};}
+\DoxyCodeLine{25     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_menu}{\string~Menu}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a6a39f0279393d72625776c4b717cad8a}{show}}() = 0;}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_menu}{Menu}} * \mbox{\hyperlink{class_menu_a8ddb344ce399d7c6b4e70dc2d3244bba}{getNextMenu}}() = 0;}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{42 \textcolor{keyword}{class }\mbox{\hyperlink{class_main_menu}{MainMenu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_menu}{Menu}} \{}
+\DoxyCodeLine{43 \textcolor{keyword}{public}:}
+\DoxyCodeLine{44     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_main_menu}{MainMenu}}(\mbox{\hyperlink{class_data}{Data}}* d) : \mbox{\hyperlink{class_menu}{Menu}}(d)\{\};}
+\DoxyCodeLine{45     \mbox{\hyperlink{class_main_menu}{\string~MainMenu}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_menu_a7a17724b8ef7f8b033d029db81a84431}{show}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{47     \mbox{\hyperlink{class_menu}{Menu}} * \mbox{\hyperlink{class_main_menu_afa17857bf98a0cbb5ef56b794d215f68}{getNextMenu}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{48 \};}
+\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{class_all_stops_menu}{AllStopsMenu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_menu}{Menu}}\{}
+\DoxyCodeLine{55 \textcolor{keyword}{public}:}
+\DoxyCodeLine{56     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_all_stops_menu}{AllStopsMenu}}(\mbox{\hyperlink{class_data}{Data}}* d) : \mbox{\hyperlink{class_menu}{Menu}}(d)\{\};}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_all_stops_menu_a7613c65b3f2bb9e5dab97c1dcba8e1a5}{show}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{58     \mbox{\hyperlink{class_menu}{Menu}} * \mbox{\hyperlink{class_all_stops_menu_a6e698b34865d3657daad77c6fcbca6a7}{getNextMenu}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{66 \textcolor{keyword}{class }\mbox{\hyperlink{class_nearby_stops_menu}{NearbyStopsMenu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_menu}{Menu}}\{}
+\DoxyCodeLine{67 \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_nearby_stops_menu}{NearbyStopsMenu}}(\mbox{\hyperlink{class_data}{Data}}* d) : \mbox{\hyperlink{class_menu}{Menu}}(d)\{\};}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nearby_stops_menu_a5b4ae146d938bab31a795a7175481380}{show}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{70     \mbox{\hyperlink{class_menu}{Menu}} * \mbox{\hyperlink{class_nearby_stops_menu_a78b0fb6baaf0557f6deffb72be559721}{getNextMenu}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{71 \};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{78 \textcolor{keyword}{class }\mbox{\hyperlink{class_search_menu}{SearchMenu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_menu}{Menu}}\{}
+\DoxyCodeLine{79 \textcolor{keyword}{public}:}
+\DoxyCodeLine{80     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_search_menu}{SearchMenu}}(\mbox{\hyperlink{class_data}{Data}}* d) : \mbox{\hyperlink{class_menu}{Menu}}(d)\{\};}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_search_menu_a97705a3d1eb474c19509c79e53257319}{show}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{82     \mbox{\hyperlink{class_menu}{Menu}} * \mbox{\hyperlink{class_search_menu_aa919b1d405c1daa74552ccc91cc060ff}{getNextMenu}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 }
+
+\end{DoxyCode}

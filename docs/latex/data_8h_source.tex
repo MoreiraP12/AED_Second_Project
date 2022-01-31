@@ -1,0 +1,77 @@
+\hypertarget{data_8h_source}{}\doxysection{data.\+h}
+\label{data_8h_source}\index{src/data.h@{src/data.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AED\_PROJ\_2\_DATA\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AED\_PROJ\_2\_DATA\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}stop.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}exceptions.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}graph.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_data}{Data}} \{}
+\DoxyCodeLine{13     std::unordered\_map<std::string, int> stopList;}
+\DoxyCodeLine{14     std::unordered\_map<double, int> stopCoordinates;}
+\DoxyCodeLine{15     std::unordered\_map<string, string> lines;}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_graph}{Graph}} network;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{23     std::vector<std::string> \textcolor{keyword}{static} readCsv(std::string line);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{31     \mbox{\hyperlink{struct_weight}{Weight}} \textcolor{keyword}{static} getWeight(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop}{Stop}}\& s1,\textcolor{keyword}{const} \mbox{\hyperlink{class_stop}{Stop}}\& s2);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} readStops();}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} readLines();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} loadLines();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{public}:}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{60     \mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}}()\{}
+\DoxyCodeLine{61         network = \mbox{\hyperlink{class_graph}{Graph}}();}
+\DoxyCodeLine{62         \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{63             this-\/>readStops();}
+\DoxyCodeLine{64             this-\/>readLines();}
+\DoxyCodeLine{65             this-\/>loadLines();}
+\DoxyCodeLine{66         \}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{catch}(\mbox{\hyperlink{class_error_opening_infile}{ErrorOpeningInfile}}\& e)\{}
+\DoxyCodeLine{68             e.\mbox{\hyperlink{class_error_opening_infile_a69d6be501afa863882b1b34e03035bbd}{print}}();}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a4712c7a1ff44e81d66d2f6c60e99a8d0}{printAllStops}}();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_data_ae9952d1dc7ad3852601eb8200160961c}{searchStop}}(\textcolor{keyword}{const} std::string\&);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{90     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_data_ae9952d1dc7ad3852601eb8200160961c}{searchStop}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& longitude, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& latitude);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_ad18e63140abc78511bfe725f02f62064}{showWalkingStops}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{double} distance);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_ad18e63140abc78511bfe725f02f62064}{showWalkingStops}}(\textcolor{keywordtype}{double} longitude, \textcolor{keywordtype}{double} latitude, \textcolor{keywordtype}{double} distance);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_ac42a50b9c0988c5f44cf2ac030ffbe4c}{injectWalkingEdges}}(\textcolor{keywordtype}{double} maxDist)\{}
+\DoxyCodeLine{112         network.\mbox{\hyperlink{class_graph_aea8a53ba3274da795bf3992bfd9c609f}{createWalkingEdges}}(maxDist);}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a7d04d54e544ef09711a69c2657c1bba2}{deleteWalkingEdges}}()\{}
+\DoxyCodeLine{119         network.\mbox{\hyperlink{class_graph_a09c06812b3e120f2446554c4382f0e93}{destroyWalkingEdges}}();}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     set<std::pair<Stop, double>> getWalkingStops( \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{double} maxDist);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     set<std::pair<Stop, double>> getWalkingStops( \textcolor{keywordtype}{double} longitude, \textcolor{keywordtype}{double} latitude, \textcolor{keywordtype}{double} maxDist);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{134     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a92e0452e62797459b154ebd50246be7d}{showPath}}(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} dest, typeWeight typeWeight);}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \};}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJ\_2\_DATA\_H}}
+
+\end{DoxyCode}

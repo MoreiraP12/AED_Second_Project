@@ -1,0 +1,60 @@
+\hypertarget{class_nearby_stops_menu}{}\doxysection{Nearby\+Stops\+Menu Class Reference}
+\label{class_nearby_stops_menu}\index{NearbyStopsMenu@{NearbyStopsMenu}}
+
+
+{\ttfamily \#include $<$menu.\+h$>$}
+
+Inheritance diagram for Nearby\+Stops\+Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_nearby_stops_menu}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_nearby_stops_menu_ab9d992651ec219a3dbac4359e00dfa2e}\label{class_nearby_stops_menu_ab9d992651ec219a3dbac4359e00dfa2e}} 
+{\bfseries Nearby\+Stops\+Menu} (\mbox{\hyperlink{class_data}{Data}} $\ast$d)
+\item 
+void \mbox{\hyperlink{class_nearby_stops_menu_a5b4ae146d938bab31a795a7175481380}{show}} () override
+\item 
+\mbox{\hyperlink{class_menu}{Menu}} $\ast$ \mbox{\hyperlink{class_nearby_stops_menu_a78b0fb6baaf0557f6deffb72be559721}{get\+Next\+Menu}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Partial listing of stops
+
+Displays all the stops near you How near you want it to be is solely determined by you 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nearby_stops_menu_a78b0fb6baaf0557f6deffb72be559721}\label{class_nearby_stops_menu_a78b0fb6baaf0557f6deffb72be559721}} 
+\index{NearbyStopsMenu@{NearbyStopsMenu}!getNextMenu@{getNextMenu}}
+\index{getNextMenu@{getNextMenu}!NearbyStopsMenu@{NearbyStopsMenu}}
+\doxysubsubsection{\texorpdfstring{getNextMenu()}{getNextMenu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_menu}{Menu}} $\ast$ Nearby\+Stops\+Menu\+::get\+Next\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Return a pointer to the next menu (\textquotesingle{}nullptr\textquotesingle{} and \textquotesingle{}this\textquotesingle{} can also be returned) nullptr -\/\texorpdfstring{$>$}{>} Return to previous menu this -\/\texorpdfstring{$>$}{>} Don\textquotesingle{}t change the menu \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_menu}{Menu}} $\ast$ to next menu 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_menu_a8ddb344ce399d7c6b4e70dc2d3244bba}{Menu}}.
+
+\mbox{\Hypertarget{class_nearby_stops_menu_a5b4ae146d938bab31a795a7175481380}\label{class_nearby_stops_menu_a5b4ae146d938bab31a795a7175481380}} 
+\index{NearbyStopsMenu@{NearbyStopsMenu}!show@{show}}
+\index{show@{show}!NearbyStopsMenu@{NearbyStopsMenu}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void Nearby\+Stops\+Menu\+::show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Show information associated with the menu 
+
+Implements \mbox{\hyperlink{class_menu_a6a39f0279393d72625776c4b717cad8a}{Menu}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/menu.\+h\item 
+src/menu.\+cpp\end{DoxyCompactItemize}
