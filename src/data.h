@@ -1,13 +1,12 @@
-//Created by Pedro Barbeira
 #ifndef AED_PROJ_2_DATA_H
 #define AED_PROJ_2_DATA_H
 
 #include <unordered_map>
-#include "Stop.h"
+#include "stop.h"
 #include <vector>
 #include <fstream>
 #include <iomanip>
-#include "Exceptions.h"
+#include "exceptions.h"
 #include "graph.h"
 
 class Data {
@@ -90,14 +89,19 @@ public:
     */
     int searchStop(const double& longitude, const double& latitude);
 
-    /**
-     * //TODO
-     */
+   /**
+    * Shows stops in walking distance
+    * @param i index of the stop
+    * @param distance distance
+    */
     void showWalkingStops(int i, double distance);
 
     /**
-    * //TODO
-    */
+     * Shows stops in walking distance
+     * @param longitude longitude
+     * @param latitude latitude
+     * @param distance distance
+     */
     void showWalkingStops(double longitude, double latitude, double distance);
 
     /**

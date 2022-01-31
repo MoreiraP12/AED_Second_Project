@@ -1,8 +1,4 @@
-//
-// Created by pedro on 23/01/2021.
-
-
-#include "Input.h"
+#include "input.h"
 
 using namespace std;
 

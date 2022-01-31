@@ -1,7 +1,7 @@
 #ifndef AED_PROJ_2_EXCEPTIONS_H
 #define AED_PROJ_2_EXCEPTIONS_H
 
-#include "Stop.h"
+#include "stop.h"
 
 /**
  * Exception class for when there is no path between stops a and b
@@ -33,7 +33,7 @@ public:
      * that caused the error as parameter
      * @param name the name of the file
      */
-    explicit ErrorOpeningInfile(std::string name) : fileName(name){};
+    explicit ErrorOpeningInfile(std::string& name) : fileName(std::move(name)){};
 
     /**
      * Informs the user there was an error opening input file "fileName"

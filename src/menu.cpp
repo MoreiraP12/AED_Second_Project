@@ -1,5 +1,4 @@
-#include "Menu.h"
-#include "Input.h"
+#include "menu.h"
 
 using namespace std;
 

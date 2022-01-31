@@ -1,9 +1,4 @@
-//
-// Created by pedro on 23/01/2022.
-//
-
-
-#include "Stop.h"
+#include "stop.h"
 
 double Stop::getDistance(const Stop& stop) const{
     double lat1 = this->getLatitude(),

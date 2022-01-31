@@ -6,9 +6,13 @@
 #include <queue>
 #include <iostream>
 #include <stack>
-#include "Stop.h"
-#include "ShowStop.h"
+#include<algorithm>
 #include <set>
+#include "stop.h"
+#include "minHeap.h"
+#include "showStop.h"
+#include "exceptions.h"
+
 #define INF (INT_MAX)
 
 using namespace std;
@@ -42,7 +46,7 @@ class Graph {
 public:
     /**
      * Constructor for the Graph. Initializes the vector of nodes with a
-     * singleton onde markin the position 0
+     * singleton once marking the position 0
      */
     Graph();
 
@@ -53,7 +57,7 @@ public:
     void addNode(const Stop& s);
 
     /**
-     * Creates and adges an edge between nodes src and dest. Receives the line
+     * Creates and add an edge between nodes src and dest. Receives the line
      * which the edge represents. If there's already an edge between those two
      * stops, adds the new line to the list of lines. Receives the weight of
      * the edge as parameter, and a boolean with marks edges that don't represent
@@ -79,7 +83,7 @@ public:
     void destroyWalkingEdges();
 
     /**
-     * Retrievs the Stop object stored in the graph's node that's in the
+     * Retrieves the Stop object stored in the graph's node that's in the
      * position i of the nodes vector
      * @param i the index of the Node
      * @return the Stop stored in said Node

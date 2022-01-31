@@ -1,8 +1,5 @@
 #include "graph.h"
-#include "minHeap.h"
-#include "Exceptions.h"
-#include <stack>
-#include<algorithm>
+
 
 Graph::Graph() {
     n = 1;

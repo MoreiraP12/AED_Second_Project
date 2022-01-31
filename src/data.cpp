@@ -1,4 +1,3 @@
-//Created by Pedro Barbeira
 #include "data.h"
 
 
@@ -9,13 +8,11 @@ Weight Data::getWeight(const Stop& s1,const Stop& s2){
     return {distance, 0};
 }
 
-//TODO
-//Add error checks to file openings
 void Data::readStops() {
     int i = 1;
     std::ifstream infile("dataset/stops.csv");
     if(!infile.is_open()){
-        throw ErrorOpeningInfile("stops.csv");
+        throw ErrorOpeningInfile((string &) "stops.csv");
     }
     std::string line;
     std::getline(infile, line);
@@ -72,7 +69,7 @@ void Data::loadLines() {
 void Data::readLines(){
     std::ifstream infile("dataset/lines.csv");
     if(!infile.is_open()){
-        throw ErrorOpeningInfile("lines.csv");
+        throw ErrorOpeningInfile((string &) "lines.csv");
     }
     std::string line;
     std::getline(infile, line);

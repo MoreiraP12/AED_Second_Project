@@ -5,6 +5,8 @@
 #include <set>
 #include <algorithm>
 #include "data.h"
+#include "input.h"
+
 
 using namespace std;
 /**
@@ -35,7 +37,7 @@ public:
 };
 
 /**
- * Displays all possible paths from login in to partial listings of flights andd transports
+ * Displays all possible listings
  */
 class MainMenu : public Menu {
 public:

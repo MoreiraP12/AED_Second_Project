@@ -1,7 +1,3 @@
-//
-// Created by pedro on 23/01/2021.
-//
-
 #ifndef AED_PROJ1_INPUT_H
 #define AED_PROJ1_INPUT_H
 

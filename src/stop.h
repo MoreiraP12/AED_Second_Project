@@ -35,7 +35,7 @@ public:
 
 
      /**
-      * Getter for the name sttribute
+      * Getter for the name attribute
       * @return the stop's name
       */
      std::string getName() const{
@@ -44,7 +44,7 @@ public:
 
      /**
       * Getter for the zone attribute
-      * @return the stops's zone
+      * @return the stops zone
       */
 
      std::string getZone() const{
@@ -78,4 +78,4 @@ public:
 
 
 
-#endif //AED_PROJ_2_STOPS_H
+#endif

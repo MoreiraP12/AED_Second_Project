@@ -1,11 +1,6 @@
-//
-// Created by danie on 30/01/2022.
-//
-
 #ifndef AED_PROJ_2_SHOWSTOP_H
 #define AED_PROJ_2_SHOWSTOP_H
-
-#include "Stop.h"
+#include "stop.h"
 #include <set>
 
 struct ShowStop{
@@ -13,4 +8,4 @@ struct ShowStop{
     std::set<std::string> lines;
 };
 
-#endif //AED_PROJ_2_SHOWSTOP_H
+#endif
